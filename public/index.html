@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スキル0！AIでクリエイターデビューマニュアル | 2025/07/11 発売</title>
+  <meta name="description" content="最短1週間であなたの“作品”を世に出すロードマップ付き。スキル0から始める、AI時代のクリエイターデビューマニュアル。">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css?v=3">
+</head>
+<body>
+
+
+  <main>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text" data-aos="fade-in" data-aos-delay="200">
+            <p class="eyebrow">New Release • 2025/07/11</p>
+            <h1>ゼロスキルから始める、<br>AI時代のクリエイターデビュー</h1>
+            <p class="sub">アナタだけの商品を世に出すサポートする１冊</p>
+
+            <!-- Countdown Timer -->
+            <div id="countdown" class="countdown">
+              <div class="countdown-item">
+                <span id="days">00</span>
+                <span>日</span>
+              </div>
+              <div class="countdown-item">
+                <span id="hours">00</span>
+                <span>時間</span>
+              </div>
+              <div class="countdown-item">
+                <span id="minutes">00</span>
+                <span>分</span>
+              </div>
+              <div class="countdown-item">
+                <span id="seconds">00</span>
+                <span>秒</span>
+              </div>
+            </div>
+
+            <a href="https://amzn.asia/d/eB3Q0Fb" class="cta-button" target="_blank">Amazon で予約する</a>
+          </div>
+          <div class="hero-image" data-aos="fade-in">
+            <img src="assets/img/book_mock.png?v=3" alt="Kindle端末に表示された書籍の表紙">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特長セクション -->
+    <section class="features">
+      <div class="container">
+        <h2>この一冊で出来ること</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <img src="assets/img/icon_guide.svg" alt="" class="feature-icon">
+            <h3>AIツール完全ガイド</h3>
+            <p>ChatGPT・Midjourney・Canva・Sora の“使える設定”を厳選</p>
+          </div>
+          <div class="feature-item">
+            <img src="assets/img/icon_workflow.svg" alt="" class="feature-icon">
+            <h3>ゼロ→1 実践ワーク</h3>
+            <p>イラスト / 動画 / 電子書籍 など 3 つの制作ジャンル別テンプレート</p>
+          </div>
+          <div class="feature-item">
+            <img src="assets/img/icon_monetize.svg" alt="" class="feature-icon">
+            <h3>収益化ステップ</h3>
+            <p>SUZURI・TikTok・Kindle・Adobe Stock でマネタイズする方法</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 著者紹介セクション -->
+    <section class="author">
+      <div class="container">
+        <div class="author-content">
+          <div class="author-avatar">
+            <img src="assets/img/avatar.png?v=3" alt="著者 tanayuu のアバター">
+          </div>
+          <div class="author-bio">
+            <h3>tanayuu（トラックドライバー × クリエイター）</h3>
+            <p>
+              日中はトラックで走り、夜は AI を駆使して
+              ブログ・動画・ゲーム開発まで手掛ける二刀流クリエイター。
+              「誰でもクリエイターになれる時代」を体現中。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 特典セクション -->
+    <section class="bonus">
+      <div class="container">
+        <h2>購入者特典あり</h2>
+        <p>
+          著者が作ったオリジナルGPTsアナタに向いてるクリエイティブ診断ツール配布。
+        </p>
+      </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta-bottom">
+      <div class="container">
+        <h2>今すぐ予約して、AI時代の波に乗ろう！</h2>
+        <a href="https://amzn.asia/d/eB3Q0Fb" class="cta-button" target="_blank">予約ページへ</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 tanayuu. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Countdown Timer Script -->
+  <script>
+    const countDownDate = new Date("2025-07-11T00:00:00+09:00").getTime();
+    const countdownElement = document.getElementById("countdown");
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      if (distance < 0) {
+        clearInterval(x);
+        if (countdownElement) {
+            countdownElement.innerHTML = "<div class='countdown-finished'>本日発売！</div>";
+        }
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+      if (minutesEl) minutesEl.innerText = String(minutes).padStart(2, '0');
+      if (secondsEl) secondsEl.innerText = String(seconds).padStart(2, '0');
+
+    }, 1000);
+  </script>
+
+  <!-- AOS (Animate on Scroll) -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800,
+    });
+  </script>
+
+</body>
+</html>
