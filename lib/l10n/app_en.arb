@@ -1,0 +1,184 @@
+{
+  "@@locale": "en",
+  "appTitle": "Quit Smoking",
+  "homeTitle": "Home",
+  "homeStatusInProgress": "Staying smoke-free",
+  "homePromptSetQuitDate": "Set your quit date to get started",
+  "homeElapsedLabel": "Elapsed",
+  "homeSavingsLabel": "Money saved",
+  "homeCigarettesLabel": "Cigarettes avoided",
+  "homeStartCta": "Start quitting",
+  "quickActionLogCraving": "Log craving",
+  "quickActionCoping": "Cope now",
+  "quickActionStats": "Statistics",
+  "quickActionSettings": "Settings",
+  "statsTitle": "Statistics",
+  "statsSavingsLabel": "Money saved",
+  "statsCigarettesLabel": "Cigarettes avoided",
+  "statsDaysLabel": "Days smoke-free",
+  "statsHealthHeading": "Health improvements",
+  "statsHealthTip20Min": "Within 20 minutes, heart rate and blood pressure drop.",
+  "statsCigarettesValue": "{count, plural, =0 {0 cigarettes} one {1 cigarette} other {{count} cigarettes}}",
+  "@statsCigarettesValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "statsDaysValue": "{count, plural, =0 {0 days} one {1 day} other {{count} days}}",
+  "@statsDaysValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsTitle": "Settings",
+  "settingsEnableNotifications": "Enable notifications",
+  "settingsNotificationsPermissionDenied": "Notification permission is not granted.",
+  "settingsDailyReminderTitle": "Daily reminder time",
+  "settingsDailyReminderUnset": "Not set",
+  "settingsDailyReminderSubtitle": "Remind me every day at {time}",
+  "@settingsDailyReminderSubtitle": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsEnableNotificationsFirst": "Turn on notifications first.",
+  "notificationDailyTitle": "Stay smoke-free",
+  "notificationDailyBody": "Take a minute to breathe deeply whenever a craving hits.",
+  "settingsDailyReminderSet": "Reminder scheduled for {time} every day.",
+  "@settingsDailyReminderSet": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsReminderClear": "Clear time",
+  "settingsDailyReminderCleared": "Reminder cleared.",
+  "settingsSendTestNotification": "Send test notification",
+  "notificationTestTitle": "Cheering you on!",
+  "notificationTestBody": "Take a minute to breathe deeply whenever a craving hits.",
+  "settingsResetProfile": "Reset profile",
+  "settingsResetProfileSubtitle": "Reset your quit date and smoking info.",
+  "settingsResetConfirmTitle": "Reset profile?",
+  "settingsResetConfirmMessage": "This action cannot be undone.",
+  "commonCancel": "Cancel",
+  "settingsResetAction": "Reset",
+  "settingsResetSuccess": "Profile reset.",
+  "aboutLegalese": "General health information only. Not medical advice.",
+  "onboardingTitle": "Prepare to quit",
+  "onboardingSelectQuitDate": "Choose your start date",
+  "onboardingStartToday": "Start today",
+  "onboardingStartOn": "Start on {date}",
+  "@onboardingStartOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingDatePickerHelp": "Quit date",
+  "onboardingProfileSection": "Profile",
+  "onboardingCigsPerDayLabel": "Cigarettes per day",
+  "onboardingCigsPerPackLabel": "Cigarettes per pack",
+  "onboardingPackPriceLabel": "Price per pack ({currency})",
+  "@onboardingPackPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingCountryLabel": "Country",
+  "onboardingCurrencyLabel": "Currency",
+  "onboardingSubmit": "Save and continue",
+  "cravingsTitle": "Craving log",
+  "cravingsAddEntry": "Add entry",
+  "cravingNewTitle": "New entry",
+  "cravingIntensityLabel": "Intensity (1-5)",
+  "cravingTriggerLabel": "Trigger",
+  "cravingCopingLabel": "Coping strategy",
+  "cravingNoteLabel": "Notes (optional)",
+  "commonSave": "Save",
+  "commonOk": "OK",
+  "durationDays": "{count, plural, one {{count} day} other {{count} days}}",
+  "@durationDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHours": "{count, plural, one {{count} hour} other {{count} hours}}",
+  "@durationHours": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationMinutes": "{count, plural, one {{count} minute} other {{count} minutes}}",
+  "@durationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cigarettesCount": "{count, plural, =0 {0 cigarettes} one {1 cigarette} other {{count} cigarettes}}",
+  "@cigarettesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "copingTitle": "Cope now",
+  "copingBreathingTitle": "Deep breathing for 1 minute",
+  "copingBreathingDescription": "Inhale for 4 seconds, hold for 4, exhale for 6. Repeat 10 times.",
+  "copingWaterTitle": "Drink water",
+  "copingWaterDescription": "Sip cold water slowly to ease cravings.",
+  "copingWalkTitle": "Walk for 5 minutes",
+  "copingWalkDescription": "Take a short walk and refresh yourself outdoors.",
+  "copingGumTitle": "Chew gum or candy",
+  "copingGumDescription": "Keep your mouth busy. Sugar-free is best.",
+  "copingStretchTitle": "Stretch it out",
+  "copingStretchDescription": "Roll your shoulders and stretch your neck to release tension.",
+  "triggerAfterMeal": "After meals",
+  "triggerBreak": "During breaks",
+  "triggerWorkStress": "Work stress",
+  "triggerAlcohol": "Drinking alcohol",
+  "triggerSocial": "Social events",
+  "triggerCommute": "Commuting or driving",
+  "settingsLanguageTitle": "App language",
+  "languageJapanese": "Japanese",
+  "languageEnglish": "English",
+  "settingsLanguageUpdated": "Language updated.",
+  "settingsCountryTitle": "Country",
+  "settingsCurrencyTitle": "Currency",
+  "settingsCountryUpdated": "Country updated.",
+  "settingsCurrencyUpdated": "Currency updated.",
+  "countryJapan": "Japan",
+  "countryUnitedStates": "United States",
+  "countryUnitedKingdom": "United Kingdom",
+  "countryGermany": "Germany",
+  "countryAustralia": "Australia",
+  "currencyJpy": "Japanese Yen (JPY)",
+  "currencyUsd": "US Dollar (USD)",
+  "currencyEur": "Euro (EUR)",
+  "currencyGbp": "British Pound (GBP)",
+  "currencyAud": "Australian Dollar (AUD)",
+  "notificationMilestoneTitle": "Milestone reached",
+  "notificationMilestone1Day": "24 hours smoke-free! Great job.",
+  "notificationMilestone3Days": "Day 3 smoke-free! You're getting over the hump.",
+  "notificationMilestone7Days": "One week smoke-free! Amazing progress.",
+  "notificationMilestone14Days": "Two weeks smoke-free! Notice the changes in your body?",
+  "notificationMilestone30Days": "30 days smoke-free! Check how much you've saved.",
+  "notificationMilestone60Days": "60 days smoke-free! Keep going with confidence.",
+  "notificationMilestone90Days": "90 days smoke-free! You've hit a major milestone."
+}

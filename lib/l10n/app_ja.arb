@@ -1,0 +1,184 @@
+{
+  "@@locale": "ja",
+  "appTitle": "Quit Smoking",
+  "homeTitle": "ホーム",
+  "homeStatusInProgress": "禁煙継続中",
+  "homePromptSetQuitDate": "開始日を設定してスタートしましょう",
+  "homeElapsedLabel": "経過",
+  "homeSavingsLabel": "節約額",
+  "homeCigarettesLabel": "吸わなかった本数",
+  "homeStartCta": "禁煙をはじめる",
+  "quickActionLogCraving": "クレイビング記録",
+  "quickActionCoping": "今すぐ対処",
+  "quickActionStats": "統計",
+  "quickActionSettings": "設定",
+  "statsTitle": "統計",
+  "statsSavingsLabel": "節約額",
+  "statsCigarettesLabel": "吸わなかった本数",
+  "statsDaysLabel": "禁煙日数",
+  "statsHealthHeading": "健康改善の目安",
+  "statsHealthTip20Min": "20分で心拍と血圧が下がります。",
+  "statsCigarettesValue": "{count}本",
+  "@statsCigarettesValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "statsDaysValue": "{count}日",
+  "@statsDaysValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsTitle": "設定",
+  "settingsEnableNotifications": "通知を有効化",
+  "settingsNotificationsPermissionDenied": "通知権限が許可されていません",
+  "settingsDailyReminderTitle": "毎日のリマインド時刻",
+  "settingsDailyReminderUnset": "未設定",
+  "settingsDailyReminderSubtitle": "毎日{time}に通知",
+  "@settingsDailyReminderSubtitle": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsEnableNotificationsFirst": "先に通知を有効化してください",
+  "notificationDailyTitle": "禁煙を継続しましょう",
+  "notificationDailyBody": "吸いたくなったら1分だけ深呼吸。",
+  "settingsDailyReminderSet": "毎日{time}に通知を設定しました",
+  "@settingsDailyReminderSet": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsReminderClear": "時刻をクリア",
+  "settingsDailyReminderCleared": "リマインドを解除しました",
+  "settingsSendTestNotification": "テスト通知を送信",
+  "notificationTestTitle": "禁煙を応援！",
+  "notificationTestBody": "吸いたくなったら1分だけ深呼吸。",
+  "settingsResetProfile": "プロフィールをリセット",
+  "settingsResetProfileSubtitle": "開始日や喫煙情報を初期化します",
+  "settingsResetConfirmTitle": "リセットしますか？",
+  "settingsResetConfirmMessage": "この操作は元に戻せません。",
+  "commonCancel": "キャンセル",
+  "settingsResetAction": "リセット",
+  "settingsResetSuccess": "リセットしました",
+  "aboutLegalese": "本アプリは一般的な健康情報です。医療助言ではありません。",
+  "onboardingTitle": "禁煙の準備",
+  "onboardingSelectQuitDate": "開始日を選択",
+  "onboardingStartToday": "今日から",
+  "onboardingStartOn": "{date}から",
+  "@onboardingStartOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingDatePickerHelp": "禁煙開始日",
+  "onboardingProfileSection": "プロフィール",
+  "onboardingCigsPerDayLabel": "1日の本数",
+  "onboardingCigsPerPackLabel": "1箱の本数",
+  "onboardingPackPriceLabel": "1箱の価格（{currency}）",
+  "@onboardingPackPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingCountryLabel": "国",
+  "onboardingCurrencyLabel": "通貨",
+  "onboardingSubmit": "保存して進む",
+  "cravingsTitle": "クレイビング記録",
+  "cravingsAddEntry": "記録",
+  "cravingNewTitle": "新規記録",
+  "cravingIntensityLabel": "強度（1〜5）",
+  "cravingTriggerLabel": "トリガー",
+  "cravingCopingLabel": "対処法",
+  "cravingNoteLabel": "メモ（任意）",
+  "commonSave": "保存",
+  "commonOk": "OK",
+  "durationDays": "{count}日",
+  "@durationDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHours": "{count}時間",
+  "@durationHours": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationMinutes": "{count}分",
+  "@durationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cigarettesCount": "{count}本",
+  "@cigarettesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "copingTitle": "今すぐ対処",
+  "copingBreathingTitle": "深呼吸1分",
+  "copingBreathingDescription": "4秒吸って4秒止め、6秒で吐く。これを10回繰り返します。",
+  "copingWaterTitle": "水を飲む",
+  "copingWaterDescription": "冷たい水をゆっくり飲むと欲求が和らぎます。",
+  "copingWalkTitle": "5分歩く",
+  "copingWalkDescription": "短い散歩で気分転換。屋外の空気でリフレッシュしましょう。",
+  "copingGumTitle": "ガム・飴",
+  "copingGumDescription": "口寂しさ対策に。シュガーレスがおすすめです。",
+  "copingStretchTitle": "ストレッチ",
+  "copingStretchDescription": "肩回しや首回りを伸ばして緊張をほぐしましょう。",
+  "triggerAfterMeal": "食後",
+  "triggerBreak": "休憩",
+  "triggerWorkStress": "仕事のストレス",
+  "triggerAlcohol": "お酒",
+  "triggerSocial": "人付き合い",
+  "triggerCommute": "移動・運転",
+  "settingsLanguageTitle": "アプリの言語",
+  "languageJapanese": "日本語",
+  "languageEnglish": "英語",
+  "settingsLanguageUpdated": "言語を更新しました",
+  "settingsCountryTitle": "国",
+  "settingsCurrencyTitle": "通貨",
+  "settingsCountryUpdated": "国を更新しました",
+  "settingsCurrencyUpdated": "通貨を更新しました",
+  "countryJapan": "日本",
+  "countryUnitedStates": "アメリカ合衆国",
+  "countryUnitedKingdom": "イギリス",
+  "countryGermany": "ドイツ",
+  "countryAustralia": "オーストラリア",
+  "currencyJpy": "日本円（JPY）",
+  "currencyUsd": "米ドル（USD）",
+  "currencyEur": "ユーロ（EUR）",
+  "currencyGbp": "英ポンド（GBP）",
+  "currencyAud": "豪ドル（AUD）",
+  "notificationMilestoneTitle": "節目のお知らせ",
+  "notificationMilestone1Day": "禁煙24時間達成！よく頑張りました",
+  "notificationMilestone3Days": "禁煙3日目！山場を越えつつあります",
+  "notificationMilestone7Days": "禁煙1週間！素晴らしい継続です",
+  "notificationMilestone14Days": "禁煙2週間！体調の変化に気づけていますか？",
+  "notificationMilestone30Days": "禁煙30日！節約額を確認しましょう",
+  "notificationMilestone60Days": "禁煙60日！自信を持って続けましょう",
+  "notificationMilestone90Days": "禁煙90日！大きな節目達成です"
+}
