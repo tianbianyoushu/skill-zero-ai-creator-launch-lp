@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suno Sheet Music — AI楽譜生成</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">&#9835;</span>
+      <span class="logo-text">Suno Sheet Music</span>
+    </div>
+    <p class="tagline">Suno AIの楽曲を、ピアノ・ギター楽譜に自動変換</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Upload Card -->
+    <section id="upload-section" class="card">
+      <h2>1. 楽曲をアップロード</h2>
+
+      <div
+        id="drop-zone"
+        class="drop-zone"
+        role="button"
+        tabindex="0"
+        aria-label="音楽ファイルをドラッグ＆ドロップ"
+      >
+        <div class="drop-icon">&#127925;</div>
+        <p class="drop-primary">ファイルをここにドラッグ＆ドロップ</p>
+        <p class="drop-secondary">または</p>
+        <label class="btn btn-outline" for="file-input">ファイルを選択</label>
+        <input
+          id="file-input"
+          type="file"
+          accept=".mp3,.wav,.m4a,.ogg,.flac,.aac"
+          hidden
+        />
+        <p class="drop-hint">対応形式: MP3, WAV, M4A, OGG, FLAC, AAC（最大 50 MB）</p>
+      </div>
+
+      <div id="file-info" class="file-info hidden">
+        <span class="file-icon">&#127925;</span>
+        <span id="file-name" class="file-name"></span>
+        <button id="remove-file" class="btn-icon" aria-label="ファイルを削除">&#x2715;</button>
+      </div>
+
+      <div class="form-group">
+        <label for="title-input">2. 曲名（任意）</label>
+        <input
+          id="title-input"
+          type="text"
+          placeholder="例: My Suno Song"
+          maxlength="100"
+        />
+      </div>
+
+      <button id="convert-btn" class="btn btn-primary" disabled>
+        楽譜を生成する
+      </button>
+    </section>
+
+    <!-- Progress Card -->
+    <section id="progress-section" class="card hidden">
+      <h2>解析中…</h2>
+      <div class="progress-track">
+        <div id="progress-bar" class="progress-bar" style="width:0%"></div>
+      </div>
+      <p id="progress-message" class="progress-message">準備中…</p>
+      <div class="steps">
+        <div class="step" id="step-1">
+          <div class="step-dot"></div>
+          <span>音源解析 (basic-pitch)</span>
+        </div>
+        <div class="step" id="step-2">
+          <div class="step-dot"></div>
+          <span>楽譜生成 (LilyPond)</span>
+        </div>
+        <div class="step" id="step-3">
+          <div class="step-dot"></div>
+          <span>PDF 書き出し</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result Card -->
+    <section id="result-section" class="card hidden">
+      <div class="result-header">
+        <span class="result-icon">&#10003;</span>
+        <h2>楽譜ができました！</h2>
+      </div>
+      <p id="result-tempo" class="result-meta"></p>
+
+      <div class="download-grid">
+        <div class="download-card">
+          <div class="instrument-icon">&#127929;</div>
+          <h3>ピアノ譜</h3>
+          <p>ト音記号 + ヘ音記号<br>大譜表</p>
+          <a id="dl-piano" class="btn btn-download" href="#" download>
+            PDFダウンロード
+          </a>
+        </div>
+        <div class="download-card">
+          <div class="instrument-icon">&#127928;</div>
+          <h3>ギター譜</h3>
+          <p>五線譜 + タブ譜<br>（標準6弦チューニング）</p>
+          <a id="dl-guitar" class="btn btn-download" href="#" download>
+            PDFダウンロード
+          </a>
+        </div>
+      </div>
+
+      <button id="new-upload-btn" class="btn btn-outline" style="margin-top:1.5rem">
+        別の曲を変換する
+      </button>
+    </section>
+
+    <!-- Error Card -->
+    <section id="error-section" class="card hidden">
+      <div class="error-header">
+        <span class="error-icon">&#9888;</span>
+        <h2>エラーが発生しました</h2>
+      </div>
+      <p id="error-message" class="error-message"></p>
+      <button id="retry-btn" class="btn btn-outline">もう一度試す</button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Powered by <strong>Spotify basic-pitch</strong> &amp; <strong>LilyPond</strong></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
