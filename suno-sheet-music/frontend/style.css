@@ -392,6 +392,132 @@ body {
   50%       { transform: scale(1.15); }
 }
 
+/* ===== Ad banner ===== */
+.ad-banner-top {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: .5rem 1rem;
+  text-align: center;
+  min-height: 90px;
+}
+
+/* ===== Modal overlay ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  text-align: center;
+}
+
+.modal-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.ad-notice {
+  font-size: .85rem;
+  color: var(--text-dim);
+}
+
+.ad-unit-wrap {
+  width: 100%;
+  min-height: 100px;
+  background: var(--surface2);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ad-unit { width: 100%; }
+
+/* Countdown ring */
+.countdown-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin-top: .25rem;
+}
+
+.countdown-ring {
+  width: 64px;
+  height: 64px;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 4;
+}
+
+#ring-progress {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 163.4;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset .9s linear;
+}
+
+.countdown-number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.countdown-msg {
+  font-size: .82rem;
+  color: var(--text-dim);
+}
+
+/* Locked download button */
+.btn-locked {
+  opacity: .4;
+  pointer-events: none;
+  cursor: not-allowed;
+  width: 100%;
+}
+
+.btn-locked.unlocked {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: pop .25s ease;
+}
+
+@keyframes pop {
+  0%   { transform: scale(.95); }
+  60%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 520px) {
   .download-grid { grid-template-columns: 1fr; }

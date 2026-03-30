@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suno Sheet Music — AI楽譜生成</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- ============================================================
+       Google AdSense
+       ※ ca-pub-XXXXXXXXXXXXXXXX をご自身のパブリッシャーIDに変更してください
+       取得先: https://adsense.google.com
+  ============================================================ -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -16,6 +24,17 @@
     </div>
     <p class="tagline">Suno AIの楽曲を、ピアノ・ギター楽譜に自動変換</p>
   </header>
+
+  <!-- ページ上部バナー広告 -->
+  <div class="ad-banner-top">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="1111111111"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
   <main class="container">
 
@@ -85,6 +104,17 @@
           <span>PDF 書き出し</span>
         </div>
       </div>
+
+      <!-- 処理中の広告 -->
+      <div style="margin-top:1.5rem">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="2222222222"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
     </section>
 
     <!-- Result Card -->
@@ -100,17 +130,17 @@
           <div class="instrument-icon">&#127929;</div>
           <h3>ピアノ譜</h3>
           <p>ト音記号 + ヘ音記号<br>大譜表</p>
-          <a id="dl-piano" class="btn btn-download" href="#" download>
+          <button id="dl-piano" class="btn btn-download">
             PDFダウンロード
-          </a>
+          </button>
         </div>
         <div class="download-card">
           <div class="instrument-icon">&#127928;</div>
           <h3>ギター譜</h3>
           <p>五線譜 + タブ譜<br>（標準6弦チューニング）</p>
-          <a id="dl-guitar" class="btn btn-download" href="#" download>
+          <button id="dl-guitar" class="btn btn-download">
             PDFダウンロード
-          </a>
+          </button>
         </div>
       </div>
 
@@ -134,6 +164,42 @@
   <footer class="site-footer">
     <p>Powered by <strong>Spotify basic-pitch</strong> &amp; <strong>LilyPond</strong></p>
   </footer>
+
+  <!-- ========== 広告ゲート モーダル ========== -->
+  <div id="ad-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <h3 id="ad-modal-title">楽譜をダウンロード</h3>
+      <p class="ad-notice">広告をご覧いただくとダウンロードできます</p>
+
+      <!-- 広告ユニット（モーダル内） -->
+      <div class="ad-unit-wrap">
+        <ins class="adsbygoogle ad-unit"
+          style="display:block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="3333333333"
+          data-ad-format="rectangle"
+          data-full-width-responsive="false"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- カウントダウン -->
+      <div class="countdown-wrap">
+        <svg class="countdown-ring" viewBox="0 0 60 60">
+          <circle class="ring-bg"    cx="30" cy="30" r="26"/>
+          <circle id="ring-progress" cx="30" cy="30" r="26"/>
+        </svg>
+        <span id="countdown-number" class="countdown-number">10</span>
+      </div>
+      <p id="countdown-msg" class="countdown-msg">秒後にダウンロード可能になります</p>
+
+      <a id="ad-download-btn" class="btn btn-download btn-locked" href="#" download>
+        ダウンロード
+      </a>
+      <button id="close-modal-btn" class="btn btn-outline" style="margin-top:.6rem;width:100%">
+        キャンセル
+      </button>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
