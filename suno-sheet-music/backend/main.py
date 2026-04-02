@@ -3,6 +3,7 @@ FastAPI backend for Suno Sheet Music Generator.
 """
 import os
 import threading
+import time
 import uuid
 from pathlib import Path
 from typing import Dict
@@ -43,6 +44,22 @@ app.add_middleware(
 
 jobs: Dict[str, dict] = {}
 
+JOB_TIMEOUT_SECS = 480  # 8 minutes — mark stuck jobs as failed
+
+
+def _watchdog() -> None:
+    """Background thread: timeout jobs that have been processing too long."""
+    while True:
+        time.sleep(30)
+        now = time.time()
+        for job_id, job in list(jobs.items()):
+            if job.get("status") == "processing":
+                if now - job.get("started_at", now) > JOB_TIMEOUT_SECS:
+                    job.update(status="failed", message="タイムアウト：処理に時間がかかりすぎました。短い曲（90秒以内）で再試行してください。")
+
+
+threading.Thread(target=_watchdog, daemon=True).start()
+
 
 # ---------------------------------------------------------------------------
 # Background processing
@@ -51,7 +68,7 @@ jobs: Dict[str, dict] = {}
 def _run_job(job_id: str, audio_path: str, title: str) -> None:
     """Execute the full audio → sheet music pipeline in a background thread."""
     try:
-        jobs[job_id].update(status="processing", progress=10, message="音楽を解析中… (1/3)")
+        jobs[job_id].update(status="processing", progress=10, message="音楽を解析中… (1/3)", started_at=time.time())
 
         from audio_processor import process_audio
         midi_path, tempo_bpm = process_audio(audio_path)

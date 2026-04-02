@@ -434,9 +434,9 @@ def generate_sheets(
     # Quantize
     qnotes = quantize_notes(raw_notes, tempo_bpm, grid=16)
 
-    # Total song length (in beats), cap at 500 measures
+    # Total song length (in beats), cap at 120 measures (keeps LilyPond fast)
     end_time = max(n.start + n.dur for n in qnotes) if qnotes else 4.0
-    total_beats = min(math.ceil(end_time / 4) * 4, 500 * 4)
+    total_beats = min(math.ceil(end_time / 4) * 4, 120 * 4)
 
     # Piano voices
     treble_notes = [n for n in qnotes if n.pitch >= 60]
