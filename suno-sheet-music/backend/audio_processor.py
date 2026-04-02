@@ -5,12 +5,8 @@ import os
 import subprocess
 from pathlib import Path
 
-# Trim audio to this length to keep processing fast and memory-safe
-MAX_AUDIO_SECS = 120
-
-
 def convert_to_wav(input_path: str) -> str:
-    """Convert any audio to mono 22050Hz WAV, trimmed to MAX_AUDIO_SECS."""
+    """Convert any audio to mono 22050Hz WAV (full length)."""
     output_path = str(Path(input_path).with_suffix(".wav"))
     if input_path == output_path:
         output_path = str(
@@ -21,7 +17,6 @@ def convert_to_wav(input_path: str) -> str:
     result = subprocess.run(
         [
             "ffmpeg", "-i", input_path,
-            "-t", str(MAX_AUDIO_SECS),
             "-ar", "22050", "-ac", "1",
             "-acodec", "pcm_s16le",
             output_path, "-y",
