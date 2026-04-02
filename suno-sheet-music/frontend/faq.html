@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>よくある質問（FAQ） — AI Gakufu</title>
+  <meta name="description" content="AI Gakufuに関するよくある質問。対応ファイル形式、楽譜の精度、料金、Suno AIとの関係など、疑問にお答えします。" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9510897003071903"
+    crossorigin="anonymous"></script>
+  <style>
+    .page-hero {
+      text-align: center;
+      padding: 80px 1.25rem 48px;
+    }
+    .page-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .75rem;
+    }
+    .page-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 0%, #a1a1a6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .page-sub {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* FAQ */
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto 80px;
+      padding: 0 1.25rem;
+    }
+    .faq-category {
+      margin-bottom: 3rem;
+    }
+    .faq-category h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: .75rem;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .faq-item:hover {
+      border-color: var(--border-s);
+    }
+    .faq-q {
+      width: 100%;
+      background: var(--glass);
+      border: none;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: left;
+      padding: 1.1rem 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: background .2s;
+    }
+    .faq-q:hover {
+      background: var(--glass-hover);
+    }
+    .faq-q .arrow {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .25s, background .2s;
+      font-size: .75rem;
+    }
+    .faq-item.open .faq-q .arrow {
+      transform: rotate(180deg);
+      background: var(--blue);
+    }
+    .faq-a {
+      display: none;
+      padding: 0 1.25rem 1.1rem;
+      color: var(--text-2);
+      font-size: .95rem;
+      line-height: 1.75;
+      background: var(--glass);
+    }
+    .faq-item.open .faq-a {
+      display: block;
+    }
+    .faq-a a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .faq-a a:hover {
+      text-decoration: underline;
+    }
+    .faq-a ul {
+      margin: .5rem 0 .5rem 1.25rem;
+    }
+    .faq-a ul li {
+      margin-bottom: .3rem;
+    }
+
+    /* Contact CTA */
+    .contact-section {
+      max-width: 800px;
+      margin: 0 auto 80px;
+      padding: 0 1.25rem;
+    }
+    .contact-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .contact-card h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+    .contact-card p {
+      color: var(--text-2);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">AI Gakufu</a>
+      <div class="nav-links">
+        <a href="/howto.html">使い方</a>
+        <a href="/faq.html" style="color:#fff">FAQ</a>
+        <a href="/privacy.html">プライバシー</a>
+        <a href="/terms.html">利用規約</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="page-eyebrow">FAQ</div>
+    <h1 class="page-title">よくある質問</h1>
+    <p class="page-sub">AI Gakufuについての疑問にお答えします。</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+
+    <!-- 基本的な使い方 -->
+    <div class="faq-category">
+      <h2>基本的な使い方</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          AI Gakufuとはどんなサービスですか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          AI Gakufuは、AI音楽生成サービス（Suno AIなど）で作成した楽曲の音声ファイルをアップロードするだけで、ピアノ譜・ギター譜を自動生成してPDFでダウンロードできるWebサービスです。音楽の知識がなくても、誰でも簡単に楽譜を作成できます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          無料で使えますか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          はい、現在は完全無料でご利用いただけます。楽譜の生成・ダウンロード前に短い広告（約10秒）をご覧いただく必要があります。広告収益によってサービスを無料提供しています。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          会員登録は必要ですか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          不要です。アカウント登録やログインなしで、すぐにご利用いただけます。ファイルをアップロードするだけで楽譜を生成できます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          スマートフォンからも使えますか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          はい、スマートフォン・タブレット・PCのどのデバイスからでもご利用いただけます。レスポンシブデザインに対応しています。
+        </div>
+      </div>
+    </div>
+
+    <!-- ファイルについて -->
+    <div class="faq-category">
+      <h2>対応ファイルについて</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          対応している音声ファイルの形式は？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          以下の形式に対応しています：
+          <ul>
+            <li>MP3（.mp3）</li>
+            <li>WAV（.wav）</li>
+            <li>M4A（.m4a）</li>
+            <li>OGG（.ogg）</li>
+            <li>FLAC（.flac）</li>
+            <li>AAC（.aac）</li>
+          </ul>
+          最大ファイルサイズは50MBです。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Suno AI以外の音楽ファイルも使えますか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          はい、Suno AI以外のAI音楽生成ツール（Udio、Musicgenなど）や、一般的な音楽ファイルもアップロードできます。ただし、著作権のある楽曲のアップロードはお控えください。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          アップロードしたファイルはどうなりますか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          アップロードされたファイルは楽譜生成処理にのみ使用され、処理完了後は一定時間後にサーバーから自動削除されます。第三者への提供や他の目的への使用は一切行いません。詳細は<a href="/privacy.html">プライバシーポリシー</a>をご確認ください。
+        </div>
+      </div>
+    </div>
+
+    <!-- 楽譜の精度について -->
+    <div class="faq-category">
+      <h2>楽譜の精度について</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          楽譜はどのくらい正確ですか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          AIによる自動変換のため、100%の精度を保証することはできません。特にメロディラインがはっきりしている楽曲では高い精度が出やすい傾向があります。生成された楽譜は参考資料としてお使いいただき、必要に応じて手動で修正されることをおすすめします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          精度が低い場合はどうすればいいですか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          以下の点を試してみてください：
+          <ul>
+            <li>より音質の良いファイル（WAVやFLAC）を使用する</li>
+            <li>メロディが明確な部分だけを切り出して使用する</li>
+            <li>楽器音が少なくシンプルな楽曲を選ぶ</li>
+            <li>曲の長さを3分以内に調整する</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          コード進行や歌詞は楽譜に含まれますか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          現在のバージョンでは、音符・テンポ・拍子記号のみを楽譜に変換します。コード名や歌詞の自動挿入には対応していません。今後のアップデートで対応予定です。
+        </div>
+      </div>
+    </div>
+
+    <!-- 著作権について -->
+    <div class="faq-category">
+      <h2>著作権について</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          生成した楽譜は自由に使えますか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          生成された楽譜の権利は、元の音声ファイルの著作権に依存します。Suno AIで生成した楽曲については、Suno AIの利用規約をご確認ください。個人的な演奏・練習目的での使用は問題ありませんが、商業利用の場合は十分ご注意ください。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          市販の音楽CDや配信楽曲をアップロードしてもいいですか？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          いいえ、著作権で保護された市販の楽曲のアップロードはお控えください。著作権法に違反する可能性があります。本サービスはAI生成楽曲など、ご自身が権利を持つ音声ファイルを対象としています。
+        </div>
+      </div>
+    </div>
+
+    <!-- トラブルシューティング -->
+    <div class="faq-category">
+      <h2>トラブルシューティング</h2>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          楽譜の生成に失敗しました。どうすれば？
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          以下をお試しください：
+          <ul>
+            <li>ファイル形式が対応しているか確認する（MP3・WAV・M4Aなど）</li>
+            <li>ファイルサイズが50MB以下か確認する</li>
+            <li>音声ファイルが壊れていないか確認する</li>
+            <li>ページをリロードして再度アップロードする</li>
+            <li>別のブラウザやデバイスで試す</li>
+          </ul>
+          それでも解決しない場合は、しばらく時間をおいてから再度お試しください。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          処理が終わらない（ずっとローディングのまま）
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          処理時間は曲の長さや複雑さによって1〜5分程度かかる場合があります。5分以上経過しても完了しない場合は、ページをリロードして再度お試しください。サーバーの混雑時は処理に時間がかかることがあります。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          PDFが開けない・ダウンロードできない
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          ブラウザのポップアップブロックが有効になっていると、ダウンロードがブロックされる場合があります。ブラウザのアドレスバー付近に表示されるポップアップ許可の通知を確認し、ai-gakufu.comからのダウンロードを許可してください。
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section">
+    <div class="contact-card">
+      <h2>解決しない場合は</h2>
+      <p>上記で解決しない場合は、<a href="/terms.html">利用規約</a>に記載の連絡先までお問い合わせください。</p>
+      <a href="/" class="btn-cta">楽譜を生成してみる</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-logo">AI Gakufu</p>
+    <div class="footer-links">
+      <a href="/howto.html">使い方</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/terms.html">利用規約</a>
+    </div>
+    <p class="footer-copy">Powered by Spotify basic-pitch &amp; LilyPond</p>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll(".faq-q").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const isOpen = item.classList.contains("open");
+        // Close all
+        document.querySelectorAll(".faq-item.open").forEach(el => el.classList.remove("open"));
+        // Toggle clicked
+        if (!isOpen) item.classList.add("open");
+      });
+    });
+  </script>
+
+</body>
+</html>
