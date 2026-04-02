@@ -6,8 +6,8 @@
   <title>AI Gakufu — AI楽譜生成</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Google AdSense ※ ca-pub-XXXXXXXXXXXXXXXX をご自身のIDに変更 -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9510897003071903"
     crossorigin="anonymous"></script>
 </head>
 <body>
@@ -55,7 +55,7 @@
   <div class="ad-banner-top">
     <ins class="adsbygoogle"
       style="display:block"
-      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-client="ca-pub-9510897003071903"
       data-ad-slot="1111111111"
       data-ad-format="auto"
       data-full-width-responsive="true"></ins>
@@ -131,7 +131,7 @@
       <div style="margin-top:2rem">
         <ins class="adsbygoogle"
           style="display:block"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-client="ca-pub-9510897003071903"
           data-ad-slot="2222222222"
           data-ad-format="auto"
           data-full-width-responsive="true"></ins>
@@ -202,13 +202,13 @@
   <!-- Ad Gate Modal -->
   <div id="ad-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
     <div class="modal-card">
-      <h3 id="ad-modal-title">楽譜をダウンロード</h3>
-      <p class="ad-notice">広告をご覧いただくとダウンロードできます</p>
+      <h3 id="ad-modal-title">楽譜を生成する</h3>
+      <p class="ad-notice" id="ad-modal-notice">広告をご覧いただくと楽譜生成が始まります</p>
 
       <div class="ad-unit-wrap">
         <ins class="adsbygoogle ad-unit"
           style="display:block"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-client="ca-pub-9510897003071903"
           data-ad-slot="3333333333"
           data-ad-format="rectangle"
           data-full-width-responsive="false"></ins>
@@ -222,9 +222,10 @@
         </svg>
         <span id="countdown-number" class="countdown-number">10</span>
       </div>
-      <p id="countdown-msg" class="countdown-msg">秒後にダウンロード可能になります</p>
+      <p id="countdown-msg" class="countdown-msg">秒後に楽譜生成が始まります</p>
 
-      <a id="ad-download-btn" class="btn-primary-pill btn-locked" style="width:100%;justify-content:center" href="#" download>
+      <!-- ダウンロードモード用ボタン（生成モードでは非表示） -->
+      <a id="ad-download-btn" class="btn-primary-pill btn-locked" style="width:100%;justify-content:center;display:none" href="#" download>
         ダウンロード
       </a>
       <button id="close-modal-btn" class="btn-ghost" style="margin-top:.5rem;width:100%">

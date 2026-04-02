@@ -30,26 +30,28 @@ const retryBtn     = document.getElementById("retry-btn");
 const errorMsg     = document.getElementById("error-message");
 
 // Ad modal
-const adModal       = document.getElementById("ad-modal");
-const adModalTitle  = document.getElementById("ad-modal-title");
-const adDownloadBtn = document.getElementById("ad-download-btn");
-const countdownNum  = document.getElementById("countdown-number");
-const countdownMsg  = document.getElementById("countdown-msg");
-const closeModalBtn = document.getElementById("close-modal-btn");
-const ringProgress  = document.getElementById("ring-progress");
+const adModal        = document.getElementById("ad-modal");
+const adModalTitle   = document.getElementById("ad-modal-title");
+const adModalNotice  = document.getElementById("ad-modal-notice");
+const adDownloadBtn  = document.getElementById("ad-download-btn");
+const countdownNum   = document.getElementById("countdown-number");
+const countdownMsg   = document.getElementById("countdown-msg");
+const closeModalBtn  = document.getElementById("close-modal-btn");
+const ringProgress   = document.getElementById("ring-progress");
 
-const COUNTDOWN_SECS  = 10;
-const RING_FULL       = 163.4; // 2π × r(26)
+const COUNTDOWN_SECS = 10;
+const RING_FULL      = 163.4; // 2π × r(26)
 
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
-let selectedFile = null;
-let pollTimer    = null;
-let currentJobId = null;
-let pianoUrl     = "";
-let guitarUrl    = "";
-let countTimer   = null;
+let selectedFile  = null;
+let pollTimer     = null;
+let currentJobId  = null;
+let pianoUrl      = "";
+let guitarUrl     = "";
+let countTimer    = null;
+let adModalMode   = "generate"; // "generate" | "download"
 
 // ---------------------------------------------------------------------------
 // File selection
@@ -104,12 +106,14 @@ document.addEventListener("dragover", (e) => e.preventDefault());
 document.addEventListener("drop",     (e) => e.preventDefault());
 
 // ---------------------------------------------------------------------------
-// Convert
+// Convert ボタン → まず広告モーダルを表示
 // ---------------------------------------------------------------------------
-convertBtn.addEventListener("click", startConversion);
+convertBtn.addEventListener("click", () => {
+  if (!selectedFile) return;
+  openAdGate("generate");
+});
 
 async function startConversion() {
-  if (!selectedFile) return;
   currentJobId = null;
   showSection("progress");
   setProgress(0, "アップロード中…");
@@ -206,24 +210,36 @@ function showResult(jobId, tempoBpm) {
 }
 
 // ダウンロードボタン → 広告ゲートを経由
-dlPianoBtn.addEventListener("click",  () => openAdGate(pianoUrl,  "ピアノ譜"));
-dlGuitarBtn.addEventListener("click", () => openAdGate(guitarUrl, "ギター譜"));
+dlPianoBtn.addEventListener("click",  () => openAdGate("download", pianoUrl,  "ピアノ譜"));
+dlGuitarBtn.addEventListener("click", () => openAdGate("download", guitarUrl, "ギター譜"));
 
 // ---------------------------------------------------------------------------
 // Ad gate
 // ---------------------------------------------------------------------------
-function openAdGate(downloadUrl, label) {
-  // モーダルをリセット
+// mode: "generate" → カウント後に楽譜生成開始
+// mode: "download" → カウント後にダウンロードボタン解放
+function openAdGate(mode, downloadUrl = "", label = "") {
+  adModalMode = mode;
   clearInterval(countTimer);
-  adModalTitle.textContent  = `${label}のダウンロード`;
-  adDownloadBtn.href        = downloadUrl;
-  adDownloadBtn.setAttribute("download", "");
-  adDownloadBtn.classList.remove("unlocked");
-  adDownloadBtn.classList.add("btn-locked");
-  countdownNum.textContent  = COUNTDOWN_SECS;
-  countdownMsg.textContent  = `${COUNTDOWN_SECS}秒後にダウンロード可能になります`;
-  ringProgress.style.strokeDashoffset = 0;
 
+  if (mode === "generate") {
+    adModalTitle.textContent  = "楽譜を生成する";
+    adModalNotice.textContent = "広告をご覧いただくと楽譜生成が始まります";
+    countdownMsg.textContent  = `${COUNTDOWN_SECS}秒後に楽譜生成が始まります`;
+    adDownloadBtn.style.display = "none";
+  } else {
+    adModalTitle.textContent  = `${label}のダウンロード`;
+    adModalNotice.textContent = "広告をご覧いただくとダウンロードできます";
+    countdownMsg.textContent  = `${COUNTDOWN_SECS}秒後にダウンロード可能になります`;
+    adDownloadBtn.style.display = "";
+    adDownloadBtn.href        = downloadUrl;
+    adDownloadBtn.setAttribute("download", "");
+    adDownloadBtn.classList.remove("unlocked");
+    adDownloadBtn.classList.add("btn-locked");
+  }
+
+  countdownNum.textContent = COUNTDOWN_SECS;
+  ringProgress.style.strokeDashoffset = 0;
   adModal.classList.remove("hidden");
 
   // カウントダウン開始
@@ -233,17 +249,27 @@ function openAdGate(downloadUrl, label) {
     countdownNum.textContent = remaining;
 
     // 円形プログレス更新
-    const elapsed  = COUNTDOWN_SECS - remaining;
-    const offset   = RING_FULL * (1 - elapsed / COUNTDOWN_SECS);
+    const elapsed = COUNTDOWN_SECS - remaining;
+    const offset  = RING_FULL * (1 - elapsed / COUNTDOWN_SECS);
     ringProgress.style.strokeDashoffset = offset;
 
     if (remaining <= 0) {
       clearInterval(countTimer);
-      // ダウンロードボタンを解放
-      adDownloadBtn.classList.remove("btn-locked");
-      adDownloadBtn.classList.add("unlocked");
       countdownNum.textContent = "✓";
-      countdownMsg.textContent = "ダウンロードできます！";
+
+      if (adModalMode === "generate") {
+        countdownMsg.textContent = "楽譜生成を開始します！";
+        // モーダルを閉じてから変換開始
+        setTimeout(() => {
+          closeAdModal();
+          startConversion();
+        }, 700);
+      } else {
+        // ダウンロードボタンを解放
+        adDownloadBtn.classList.remove("btn-locked");
+        adDownloadBtn.classList.add("unlocked");
+        countdownMsg.textContent = "ダウンロードできます！";
+      }
     }
   }, 1000);
 }
