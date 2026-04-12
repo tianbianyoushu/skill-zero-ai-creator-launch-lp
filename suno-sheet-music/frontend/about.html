@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>運営者情報・お問い合わせ — AI Gakufu</title>
+  <meta name="description" content="AI Gakufuの運営者情報、サービス概要、お問い合わせ先をご案内します。" />
+  <link rel="stylesheet" href="style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9510897003071903"
+    crossorigin="anonymous"></script>
+  <style>
+    .page-hero {
+      text-align: center;
+      padding: 80px 1.25rem 48px;
+    }
+    .page-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .75rem;
+    }
+    .page-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 0%, #a1a1a6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .page-sub {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .about-section {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      padding: 0 1.25rem;
+    }
+    .about-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 1.25rem;
+    }
+    .about-card h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .about-card h2 .icon {
+      font-size: 1.3rem;
+    }
+    .about-card p {
+      color: var(--text-2);
+      line-height: 1.8;
+      margin-bottom: .75rem;
+    }
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .info-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .info-table tr:last-child {
+      border-bottom: none;
+    }
+    .info-table th {
+      text-align: left;
+      padding: .85rem 1rem .85rem 0;
+      color: var(--text-2);
+      font-weight: 500;
+      font-size: .95rem;
+      width: 140px;
+      vertical-align: top;
+    }
+    .info-table td {
+      padding: .85rem 0;
+      color: var(--text);
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+    .info-table td a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .info-table td a:hover {
+      text-decoration: underline;
+    }
+    .contact-form-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .form-row label {
+      font-size: .9rem;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+    .form-row input,
+    .form-row textarea {
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border-s);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      width: 100%;
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: var(--blue);
+    }
+    .form-row textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .form-notice {
+      font-size: .85rem;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+    .tech-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+      margin-top: .5rem;
+    }
+    @media (max-width: 500px) {
+      .tech-list { grid-template-columns: 1fr; }
+    }
+    .tech-item {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: .6rem 1rem;
+      font-size: .88rem;
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .tech-item::before {
+      content: "▸";
+      color: var(--blue);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">AI Gakufu</a>
+      <div class="nav-links">
+        <a href="/howto.html">使い方</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html" style="color:#fff">運営者情報</a>
+        <a href="/privacy.html">プライバシー</a>
+        <a href="/terms.html">利用規約</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="page-eyebrow">About</div>
+    <h1 class="page-title">運営者情報</h1>
+    <p class="page-sub">AI Gakufu のサービス概要と運営者情報をご案内します。</p>
+  </section>
+
+  <div class="about-section">
+
+    <!-- サービス概要 -->
+    <div class="about-card">
+      <h2><span class="icon">🎵</span> サービス概要</h2>
+      <p>AI Gakufu（AIがくふ）は、Suno AIをはじめとするAI音楽生成ツールで作成した楽曲の音声ファイルをアップロードするだけで、ピアノ譜・ギター譜をPDF形式で自動生成できる無料のWebサービスです。</p>
+      <p>音楽理論の知識がなくても、誰でも簡単にAI生成楽曲の楽譜を手に入れることができます。個人の学習・練習・創作活動にお役立てください。</p>
+    </div>
+
+    <!-- 使用技術 -->
+    <div class="about-card">
+      <h2><span class="icon">⚙️</span> 使用技術</h2>
+      <p>本サービスは以下のオープンソース技術を活用しています。</p>
+      <div class="tech-list">
+        <div class="tech-item">Spotify basic-pitch（音声→MIDI変換）</div>
+        <div class="tech-item">LilyPond（楽譜組版エンジン）</div>
+        <div class="tech-item">FastAPI（バックエンドAPI）</div>
+        <div class="tech-item">ffmpeg（音声フォーマット変換）</div>
+        <div class="tech-item">pretty_midi（MIDIデータ解析）</div>
+        <div class="tech-item">Docker（サーバー環境）</div>
+      </div>
+    </div>
+
+    <!-- 運営者情報 -->
+    <div class="about-card">
+      <h2><span class="icon">👤</span> 運営者情報</h2>
+      <table class="info-table">
+        <tr>
+          <th>サービス名</th>
+          <td>AI Gakufu（AIがくふ）</td>
+        </tr>
+        <tr>
+          <th>サイトURL</th>
+          <td><a href="https://ai-gakufu.com">https://ai-gakufu.com</a></td>
+        </tr>
+        <tr>
+          <th>運営者</th>
+          <td>個人運営</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>日本</td>
+        </tr>
+        <tr>
+          <th>お問い合わせ</th>
+          <td>下記フォームよりご連絡ください</td>
+        </tr>
+        <tr>
+          <th>広告</th>
+          <td>Google AdSense（広告収益によりサービスを無料提供しています）</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- お問い合わせ -->
+    <div class="about-card">
+      <h2><span class="icon">✉️</span> お問い合わせ</h2>
+      <p>サービスに関するご質問・ご意見・不具合のご報告は以下のフォームよりお送りください。内容を確認のうえ、順次対応いたします。</p>
+
+      <form class="contact-form-wrap" action="https://formspree.io/f/XXXXXXXX" method="POST">
+        <div class="form-row">
+          <label for="contact-name">お名前</label>
+          <input type="text" id="contact-name" name="name" placeholder="山田 太郎" required />
+        </div>
+        <div class="form-row">
+          <label for="contact-email">メールアドレス</label>
+          <input type="email" id="contact-email" name="email" placeholder="example@email.com" required />
+        </div>
+        <div class="form-row">
+          <label for="contact-subject">件名</label>
+          <input type="text" id="contact-subject" name="subject" placeholder="お問い合わせ内容の件名" required />
+        </div>
+        <div class="form-row">
+          <label for="contact-message">メッセージ</label>
+          <textarea id="contact-message" name="message" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+        </div>
+        <p class="form-notice">※ご返信までに数日かかる場合があります。ご了承ください。<br>※送信いただいた内容は、お問い合わせへの返答以外の目的には使用しません。</p>
+        <button type="submit" class="btn-primary-pill" style="width:100%;justify-content:center">
+          送信する
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-logo">AI Gakufu</p>
+    <div class="footer-links">
+      <a href="/howto.html">使い方</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/terms.html">利用規約</a>
+    </div>
+    <p class="footer-copy">Powered by Spotify basic-pitch &amp; LilyPond</p>
+  </footer>
+
+</body>
+</html>
