@@ -8,6 +8,7 @@ import '../features/cravings/cravings_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/quit/profile.dart';
+import '../features/game/mario_game_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/stats/stats_screen.dart';
 
@@ -50,6 +51,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/settings',
         pageBuilder: (context, state) => _fade(const SettingsScreen()),
+      ),
+      GoRoute(
+        path: '/game',
+        pageBuilder: (context, state) => _fade(const MarioGameScreen()),
       ),
     ],
   );

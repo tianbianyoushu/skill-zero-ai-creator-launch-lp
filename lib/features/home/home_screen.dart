@@ -79,6 +79,11 @@ class HomeScreen extends ConsumerWidget {
                   label: l10n.quickActionSettings,
                   onTap: () => context.push('/settings'),
                 ),
+                _QuickAction(
+                  icon: Icons.sports_esports,
+                  label: 'ミニゲーム',
+                  onTap: () => context.push('/game'),
+                ),
               ],
             ),
             const Spacer(),
