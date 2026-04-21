@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>音声から楽譜へ — AIが音を「読む」仕組みを図解 — AI Gakufu</title>
+  <meta name="description" content="Spotifyが公開した音声→MIDI変換AI「Basic Pitch」を中心に、音声データがどのようにして楽譜に変換されるのかをエンジニア視点で解説。CQTスペクトログラム、ピッチ推定、MIDI変換、楽譜組版のパイプラインを図解します。" />
+  <meta name="keywords" content="AI 楽譜 仕組み, 音声 MIDI 変換, Basic Pitch, 音声解析 AI, 自動採譜" />
+  <link rel="canonical" href="https://ai-gakufu.com/blog/how-ai-transcribes-music.html" />
+
+  <meta property="og:title" content="音声から楽譜へ — AIが音を「読む」仕組みを図解" />
+  <meta property="og:description" content="AIがどうやって音声から音符を検出するのか。Basic Pitchの仕組みをエンジニア視点で解説。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ai-gakufu.com/blog/how-ai-transcribes-music.html" />
+  <meta property="og:site_name" content="AI Gakufu" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9510897003071903" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org","@type":"Article",
+    "headline":"音声から楽譜へ — AIが音を「読む」仕組みを図解",
+    "description":"Basic Pitchを中心に音声→MIDI→楽譜のパイプラインを解説",
+    "author":{"@type":"Organization","name":"AI Gakufu 運営チーム"},
+    "publisher":{"@type":"Organization","name":"AI Gakufu","url":"https://ai-gakufu.com/"},
+    "datePublished":"2026-04-14","dateModified":"2026-04-14",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-gakufu.com/blog/how-ai-transcribes-music.html"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org","@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"ホーム","item":"https://ai-gakufu.com/"},
+      {"@type":"ListItem","position":2,"name":"ブログ","item":"https://ai-gakufu.com/blog/"},
+      {"@type":"ListItem","position":3,"name":"音声から楽譜へ — AIが音を「読む」仕組み"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">AI Gakufu</a>
+      <div class="nav-links">
+        <a href="/howto.html">使い方</a>
+        <a href="/blog/">ブログ</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html">運営者情報</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="article-wrap">
+
+    <nav class="breadcrumb">
+      <a href="/">ホーム</a><span class="sep">/</span>
+      <a href="/blog/">ブログ</a><span class="sep">/</span>
+      音声から楽譜へ — AIが音を「読む」仕組みを図解
+    </nav>
+
+    <header class="article-header">
+      <span class="article-category">AI 技術解説</span>
+      <h1 class="article-title">音声から楽譜へ — AIが音を「読む」仕組みを図解</h1>
+      <div class="article-meta">
+        <time datetime="2026-04-14">2026年4月14日 公開</time>
+        <span class="author">著者：AI Gakufu 運営チーム</span>
+        <span>約10分で読了（約2,000文字）</span>
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>MP3 ファイルを AI に投げると、ものの数分で楽譜の PDF が出てくる。— 「ふつうに便利だな」と感じてもらえるなら嬉しいのですが、その裏では実に興味深い機械学習の処理が走っています。筆者は AI Gakufu を実装する過程で何度も内部挙動をログに出して眺めてきました。この記事では、<strong>音声から楽譜への変換が具体的にどのステップで何をしているのか</strong>を、非エンジニアの方にも分かるレベルで解説します。</p>
+
+      <div class="callout">
+        <strong>この記事のゴール</strong>
+        AI Gakufu の内部で走っているパイプラインを理解することで、なぜこの曲はうまく楽譜化できるのに、あの曲はできないのか、という「AIの得意・不得意」を直感的に把握できるようになります。
+      </div>
+
+      <h2>そもそも「音を楽譜にする」とはどんな作業か</h2>
+      <p>まずはAIの話を抜きにして、音楽家が「耳コピ」するときに何をしているのかを振り返ります。</p>
+      <p>音楽家は音を聞きながら、次のような3つのレイヤーを同時に頭の中で作り上げています。</p>
+      <ol>
+        <li><strong>音高（ピッチ）</strong>の識別：これは C4 だ、これは E4 だ、という認識</li>
+        <li><strong>タイミングと長さ</strong>の把握：いつ鳴り始めて、どれくらい伸びたのか</li>
+        <li><strong>記譜</strong>の決定：五線譜の上にどう書くか（臨時記号、リズム割、声部分けなど）</li>
+      </ol>
+      <p>この3つの工程は、人間でもそれなりに訓練が必要で、プロでも1曲の完全採譜に何時間もかかります。AIによる自動採譜は、この工程を数十秒〜数分に圧縮しようという挑戦です。</p>
+
+      <h2>Basic Pitch — Spotify が公開した音声→MIDI 変換モデル</h2>
+      <p>AI Gakufu が採用している音声→MIDI の変換エンジンは、<strong>Spotify が2022年にオープンソースで公開した「Basic Pitch」</strong>というモデルです。音楽ストリーミング最大手が社内で使っていた技術を無償公開したもので、軽量・高速でありながら既存の商用モデルに匹敵する精度を持っています。</p>
+
+      <h3>Basic Pitch の特徴</h3>
+      <ul>
+        <li><strong>モデルサイズが小さい</strong>：約 17MB と非常にコンパクト。CPU でも実用速度で動く</li>
+        <li><strong>楽器を選ばない</strong>：ピアノ・ギター・ボーカル・管楽器など幅広く対応</li>
+        <li><strong>和音対応</strong>：同時に複数の音が鳴っていても分離して検出できる（ポリフォニック対応）</li>
+        <li><strong>ピッチベンド対応</strong>：スライドやビブラートなど微妙な音高変化も検出</li>
+      </ul>
+
+      <h2>パイプラインを1ステップずつ見てみる</h2>
+      <p>AI Gakufu の内部処理は、ざっくり4つの段階に分かれます。</p>
+
+      <h3>ステップ1：音声ファイルを WAV に統一する（ffmpeg）</h3>
+      <p>アップロードされたファイルは MP3 や M4A など様々ですが、<strong>まず全部 16bit・22050Hz・モノラルの WAV にリサンプリング</strong>されます。これは Basic Pitch が期待する入力形式に合わせるためです。ここでは ffmpeg というツールを使っています。</p>
+      <blockquote>
+        余談：22050Hz は一見低いサンプリングレートに見えますが、人が耳コピする周波数帯（おおよそ 100Hz〜3000Hz）を捉えるには十分で、むしろ処理が軽くなるため AI には好都合です。
+      </blockquote>
+
+      <h3>ステップ2：音声を周波数の絵に変換する（CQT スペクトログラム）</h3>
+      <p>ここが音楽 AI ならではの工夫です。一般的な音声 AI では FFT（高速フーリエ変換）でスペクトログラムを作ることが多いのですが、Basic Pitch は <strong>Constant-Q Transform（CQT, コンスタント・Q変換）</strong>という手法を使います。</p>
+      <p>FFT は周波数を等間隔で区切るのですが、<strong>音楽のピッチはオクターブごとに倍々になる指数関数的なもの</strong>です。FFT は低音域の分解能が粗く、高音域では細かすぎるというミスマッチが起きます。CQT は対数スケールで周波数を区切るため、どのオクターブでも同じ精度で音高が見えます。</p>
+      <p>この時点で、音声は<strong>縦軸＝音高、横軸＝時間</strong>という、まさに楽譜に似た2次元画像になります。</p>
+
+      <h3>ステップ3：AI（CNN）が音符を検出する</h3>
+      <p>得られた CQT スペクトログラム画像を、CNN（畳み込みニューラルネットワーク）で解析します。学習済みモデルが、画像の中から<strong>「この時刻・この音高で、音が鳴っている／鳴っていない」</strong>を予測します。</p>
+      <p>さらに Basic Pitch は3種類の出力を同時に行います。</p>
+      <ul>
+        <li><strong>Note onset（ノートの始まり）</strong>：音の立ち上がりタイミング</li>
+        <li><strong>Note activation（ノートが鳴っている期間）</strong>：音の持続時間</li>
+        <li><strong>Pitch contour（ピッチの揺らぎ）</strong>：ビブラートやスライドなど連続的な音高変化</li>
+      </ul>
+      <p>この3つを組み合わせることで、精度の高い MIDI データが得られます。</p>
+
+      <h3>ステップ4：MIDI データを楽譜に組版する（LilyPond）</h3>
+      <p>MIDI は「いつ・どの音を・どれくらい鳴らすか」という演奏情報ですが、楽譜に必要な情報は少し違います。<strong>楽譜は視覚的に読みやすい記号のレイアウト</strong>でなければなりません。音符の連桁（八分音符を線でつなぐ）、小節線、拍子、クレフ選択、音声（右手と左手の分離）など、<strong>「音を書き下すための美的な判断」</strong>が必要です。</p>
+      <p>ここで登場するのが <strong>LilyPond</strong> です。LilyPond は1996年から開発されているオープンソースの楽譜組版エンジンで、<code>c4 d4 e4 f4</code> のような簡単な記法から、プロフェッショナル品質の楽譜 PDF を生成できます。</p>
+      <p>AI Gakufu では、pretty_midi で MIDI をパースしたあと、各音符を LilyPond 記法に変換し、LilyPond のコマンドを呼び出して PDF を生成しています。</p>
+
+      <h2>ピアノ譜とギター譜を分岐させる工夫</h2>
+      <p>MIDI には単なる「音高」しか入っていません。これをピアノ譜にするには右手/左手に分ける必要があり、ギター譜にするには演奏可能な音域に収める必要があります。AI Gakufu では以下のシンプルなルールを採用しています。</p>
+      <ul>
+        <li><strong>ピアノ</strong>：MIDI ノート番号60（中央C）以上は高音部譜表、未満は低音部譜表</li>
+        <li><strong>ギター</strong>：MIDI ノート番号 40〜76（ギターの実用音域）にマッピングし、TAB譜も同時に生成</li>
+      </ul>
+
+      <h2>AI の得意・不得意</h2>
+      <p>パイプライン全体像が見えると、AIがなぜこの曲は得意で、あの曲は苦手なのかが見えてきます。</p>
+
+      <h3>得意な音源</h3>
+      <ul>
+        <li>ソロピアノ、ソロギター</li>
+        <li>音が明瞭なアコースティック楽器</li>
+        <li>中テンポ（60〜120 BPM）</li>
+        <li>和音が3〜4和音までの構成</li>
+      </ul>
+
+      <h3>苦手な音源</h3>
+      <ul>
+        <li>厚みのある EDM、オーケストラ</li>
+        <li>強いエフェクト（ディストーション、リバーブ過多）</li>
+        <li>ボーカルのメリスマ（音が滑らかに動く部分）</li>
+        <li>ドラムなど打楽器の多い曲</li>
+      </ul>
+
+      <h2>なぜ完璧ではないのか</h2>
+      <p>100%の精度で音声を楽譜化することは、現時点の AI では不可能です。理由は大きく3つあります。</p>
+      <ol>
+        <li><strong>音声信号自体があいまい</strong>：複数の楽器が同じ周波数帯で重なると、物理的に分離不能な瞬間がある</li>
+        <li><strong>記譜にはプロの判断が要る</strong>：8分音符の連結、声部分け、臨時記号の選択などは文脈依存</li>
+        <li><strong>学習データの限界</strong>：Basic Pitch は汎用モデルなので、あらゆるジャンルで同じ精度は出せない</li>
+      </ol>
+      <p>それでも、2020年代前半までは不可能だった作業が、今や無料で数分で実行できるという事実は、<strong>音楽制作の民主化</strong>という観点で大きな変化です。</p>
+
+      <h2>まとめ</h2>
+      <p>AI Gakufu の内部では、「音声 → CQT画像 → CNN で音符検出 → MIDI → LilyPond で組版 → PDF」という流れで楽譜が生成されています。各工程で使っているライブラリは全てオープンソースで、運営者は主にそれらをつなぎ合わせる Web アプリとして実装しています。</p>
+      <p>仕組みが見えれば、次に何を試したくなるかが変わります。たとえば「インスト版で再生成してから楽譜化する」といった工夫は、CNN がボーカルに弱いことを知っていれば自然と思いつきます。ぜひご自身の楽曲で、AIの挙動を観察してみてください。</p>
+
+      <div class="article-cta">
+        <h4>実際の精度を試してみる</h4>
+        <p>理論だけでは分からない「どの程度うまく楽譜化できるか」を、あなたの手元の音源で確かめてみましょう。</p>
+        <a href="/" class="btn-primary-pill">AI Gakufu を開く</a>
+      </div>
+
+      <hr>
+
+      <section class="related-articles">
+        <h3>関連記事</h3>
+        <div class="related-grid">
+          <a class="related-card" href="/blog/suno-ai-score-guide.html">
+            <div class="rcat">Suno AI 活用</div>
+            <h5>Suno AIで作った曲を楽譜にする完全ガイド【2026年版】</h5>
+          </a>
+          <a class="related-card" href="/blog/read-sheet-music-basics.html">
+            <div class="rcat">音楽基礎</div>
+            <h5>楽譜の読み方入門｜五線譜・音符・リズムの基本</h5>
+          </a>
+          <a class="related-card" href="/blog/piano-vs-guitar-score.html">
+            <div class="rcat">楽譜の知識</div>
+            <h5>ピアノ譜とギター譜の違い — どちらをダウンロードすべき？</h5>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <p class="footer-logo">AI Gakufu</p>
+    <div class="footer-links">
+      <a href="/howto.html">使い方</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/terms.html">利用規約</a>
+    </div>
+    <p class="footer-copy">Powered by Spotify basic-pitch &amp; LilyPond</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suno AIで思い通りの曲を作るプロンプト設計のコツ — AI Gakufu</title>
+  <meta name="description" content="Suno AIで「もう少しこういう雰囲気にしたい」を実現するためのプロンプト設計術。ジャンル語・楽器指定・テンポ表現・歌詞の扱いまで、実際に効いたプロンプト例を体系化して解説します。" />
+  <meta name="keywords" content="Suno AI, プロンプト, 作曲, AI 音楽生成, Custom Mode" />
+  <link rel="canonical" href="https://ai-gakufu.com/blog/suno-ai-prompt-tips.html" />
+
+  <meta property="og:title" content="Suno AIで思い通りの曲を作るプロンプト設計のコツ" />
+  <meta property="og:description" content="ジャンル語・楽器指定・テンポ表現・歌詞の扱いなど、実際に効果のあったプロンプト例を体系化しました。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ai-gakufu.com/blog/suno-ai-prompt-tips.html" />
+  <meta property="og:site_name" content="AI Gakufu" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9510897003071903" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Suno AIで思い通りの曲を作るプロンプト設計のコツ","description":"ジャンル語・楽器指定・テンポ表現・歌詞の扱いなど、実際に効果のあったプロンプト例を体系化","author":{"@type":"Organization","name":"AI Gakufu 運営チーム"},"publisher":{"@type":"Organization","name":"AI Gakufu","url":"https://ai-gakufu.com/"},"datePublished":"2026-03-28","dateModified":"2026-03-28","mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-gakufu.com/blog/suno-ai-prompt-tips.html"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://ai-gakufu.com/"},{"@type":"ListItem","position":2,"name":"ブログ","item":"https://ai-gakufu.com/blog/"},{"@type":"ListItem","position":3,"name":"Suno AIで思い通りの曲を作るプロンプト設計のコツ"}]}
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">AI Gakufu</a>
+      <div class="nav-links">
+        <a href="/howto.html">使い方</a>
+        <a href="/blog/">ブログ</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html">運営者情報</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="article-wrap">
+
+    <nav class="breadcrumb">
+      <a href="/">ホーム</a><span class="sep">/</span>
+      <a href="/blog/">ブログ</a><span class="sep">/</span>
+      Suno AIで思い通りの曲を作るプロンプト設計のコツ
+    </nav>
+
+    <header class="article-header">
+      <span class="article-category">Suno AI 活用</span>
+      <h1 class="article-title">Suno AIで思い通りの曲を作るプロンプト設計のコツ</h1>
+      <div class="article-meta">
+        <time datetime="2026-03-28">2026年3月28日 公開</time>
+        <span class="author">著者：AI Gakufu 運営チーム</span>
+        <span>約11分で読了（約2,200文字）</span>
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>Suno AI を使っていると、「もう少しだけ、こういう雰囲気にしたいんだけどなぁ」という感覚にぶつかります。テンポをもう少し速く、ギターをもう少し前に出して、ボーカルはもっとハスキーに — そうした細かい調整を言葉で伝えるのが、<strong>プロンプト設計</strong>という作業です。</p>
+      <p>運営者は AI Gakufu 用のデモ音源を作る過程で、Suno AI の V3〜V4 にかけて<strong>数百曲以上</strong>生成してきました。その試行錯誤のなかで、「これは効いた」というプロンプトパターンが見えてきたので、体系化してお伝えします。</p>
+
+      <div class="callout">
+        <strong>この記事でわかること</strong>
+        <ul>
+          <li>Suno AI プロンプトの基本構造（4要素モデル）</li>
+          <li>ジャンル語・楽器・テンポ・ムードの書き方</li>
+          <li>Custom Mode と Simple Mode の使い分け</li>
+          <li>歌詞を入れるときの [Verse] [Chorus] タグの使い方</li>
+          <li>再現性を上げる Seed と Persona の使い方</li>
+        </ul>
+      </div>
+
+      <h2>基本構造 — 効くプロンプトは4つの要素でできている</h2>
+      <p>運営者の経験上、Suno AI に伝わりやすいプロンプトは<strong>「ジャンル・楽器・テンポ/ムード・年代/文化的文脈」</strong>の4要素を含んでいます。これをフォーマット化すると次のようになります。</p>
+      <pre><code>[ジャンル], [主要楽器], [テンポ/ムード], [年代/文化的文脈]</code></pre>
+      <p>例：</p>
+      <ul>
+        <li><code>lo-fi hip hop, mellow rhodes piano, slow tempo, 90s tokyo night vibe</code></li>
+        <li><code>alternative rock, distorted guitar and pounding drums, energetic, early 2000s american</code></li>
+        <li><code>acoustic folk, fingerstyle guitar, gentle and warm, 70s laurel canyon</code></li>
+      </ul>
+      <p>逆にうまくいかないのは、<strong>「いい感じの曲」「かっこいい曲」「泣ける曲」</strong>のような抽象的な指示。AIは「いい感じ」を学習していないので、もっと具体的な語で分解する必要があります。</p>
+
+      <h2>ジャンル語 — 最初の1語で世界観が決まる</h2>
+      <p>Suno AI は内部で膨大なジャンル語彙を学習しています。一般的なジャンル名（rock, pop, jazz, hip hop, electronic, classical, country）はもちろん、<strong>サブジャンル語</strong>も効きます。</p>
+      <p>運営者が実際に効果を確認したサブジャンル例：</p>
+      <ul>
+        <li><code>shoegaze</code> — 壁のようなギターの音像</li>
+        <li><code>synthwave</code> — 80年代風シンセ主体</li>
+        <li><code>city pop</code> — 80年代日本のAOR的サウンド</li>
+        <li><code>neo-soul</code> — 現代的なソウル/R&amp;B</li>
+        <li><code>bossa nova</code> — ブラジルの軽快なリズム</li>
+        <li><code>post-rock</code> — 長尺の器楽インスト</li>
+        <li><code>ambient</code> — リズム希薄な音の風景</li>
+        <li><code>drum and bass</code> — 170BPM前後の疾走感</li>
+      </ul>
+      <p><strong>ジャンルを2つ組み合わせる</strong>と個性が出やすくなります。例えば <code>lo-fi jazz</code>、<code>orchestral hip hop</code>、<code>indie folk electronic</code> など。ただし3つ以上を混ぜると破綻しやすいので2つまでが無難です。</p>
+
+      <h2>楽器指定 — "guitar"だけでは足りない</h2>
+      <p>「ギター」と一口に言っても、アコースティック、エレキ、クラシックギター、12弦、スライドギターなど多種多様です。<strong>具体的な楽器名</strong>を書くと、AIはそれに近い音色を選んでくれます。</p>
+
+      <h3>効いた楽器表現の例</h3>
+      <table>
+        <thead><tr><th>ざっくり</th><th>具体的</th></tr></thead>
+        <tbody>
+          <tr><td>guitar</td><td>fingerpicked acoustic guitar / distorted electric guitar / warm jazz guitar</td></tr>
+          <tr><td>piano</td><td>rhodes piano / grand piano / upright piano / mellow electric piano</td></tr>
+          <tr><td>drums</td><td>boom bap drums / trap hi-hats / brushed jazz drums / 808 kicks</td></tr>
+          <tr><td>synth</td><td>analog moog bass / supersaw lead / detuned pad / FM keys</td></tr>
+          <tr><td>strings</td><td>sweeping orchestral strings / solo cello / pizzicato violin</td></tr>
+        </tbody>
+      </table>
+      <p>さらに「<strong>主役</strong>」を指定したいときは <code>featuring [楽器名]</code> と書くと、その楽器が前に出やすくなります。例：<code>ambient pop, featuring soprano saxophone, slow tempo</code>。</p>
+
+      <h2>テンポとムードの書き方</h2>
+      <p>テンポは数値（BPM）でも感覚語でも指定できますが、<strong>感覚語のほうが破綻しにくい</strong>というのが運営者の体感です。</p>
+      <ul>
+        <li>遅い：<code>slow tempo</code>, <code>ballad tempo</code>, <code>downtempo</code>, <code>chillout</code></li>
+        <li>中程度：<code>mid-tempo</code>, <code>steady groove</code>, <code>laid-back</code></li>
+        <li>速い：<code>upbeat</code>, <code>energetic</code>, <code>driving tempo</code>, <code>uptempo</code></li>
+        <li>超速い：<code>frantic</code>, <code>breakneck</code>, <code>160 BPM</code>, <code>drum and bass tempo</code></li>
+      </ul>
+      <p>ムードは感情の形容詞を使います。<code>melancholic</code>, <code>uplifting</code>, <code>dreamy</code>, <code>nostalgic</code>, <code>aggressive</code>, <code>hopeful</code>, <code>romantic</code>, <code>haunting</code> など。<strong>2語までに絞る</strong>と方向性が明確になります。</p>
+
+      <h2>Simple Mode と Custom Mode の使い分け</h2>
+      <p>Suno AI には「自然言語で放り込むだけ」の Simple Mode と、歌詞・タイトル・スタイルを別欄に入力する Custom Mode があります。運営者の使い分けは次の通り。</p>
+
+      <h3>Simple Modeを使う場合</h3>
+      <ul>
+        <li>インストゥルメンタル曲を短時間で量産したいとき</li>
+        <li>雰囲気重視でイメージを探索しているとき</li>
+        <li>歌詞にこだわりがないBGM用途</li>
+      </ul>
+
+      <h3>Custom Modeを使う場合</h3>
+      <ul>
+        <li>自作の歌詞を正確に歌わせたいとき</li>
+        <li>イントロ→Aメロ→サビの構成を指定したいとき</li>
+        <li>2コーラス目のアレンジを変えたいとき</li>
+        <li>長尺（2分以上）の楽曲をコントロールしたいとき</li>
+      </ul>
+
+      <h2>歌詞の書き方 — セクションタグを活用する</h2>
+      <p>Custom Modeで歌詞を入れる場合、<strong>[Verse] [Chorus] [Bridge] などのセクションタグ</strong>を使うと構成がくっきりします。例：</p>
+      <pre><code>[Intro]
+(instrumental, 8 bars)
+
+[Verse 1]
+夜の電車 窓に映る
+知らない街の灯りたち
+
+[Chorus]
+まだ終わらない 君の歌が
+遠くで響いている
+
+[Verse 2]
+傘を忘れた帰り道
+雨の匂い 思い出す
+
+[Chorus]
+まだ終わらない 君の歌が
+遠くで響いている
+
+[Bridge]
+(guitar solo, 4 bars)
+
+[Outro]
+fade out slowly</code></pre>
+      <p>この形式にすると、AIは<strong>セクションごとにアレンジを変えてくれる</strong>ことが多くなります。サビで楽器が増えたり、ブリッジでソロが入ったり。</p>
+      <p>その他、効くカスタムタグ：</p>
+      <ul>
+        <li><code>[Instrumental break]</code> — 間奏を明示的に入れる</li>
+        <li><code>[Guitar solo]</code> — ギターソロを指定（楽器名を変えればOK）</li>
+        <li><code>[Build-up]</code> — 盛り上がりへの助走</li>
+        <li><code>[Drop]</code> — EDMの低音部分</li>
+        <li><code>[Whisper]</code> — ささやき声で歌わせる</li>
+        <li><code>[Spoken word]</code> — 語り</li>
+      </ul>
+
+      <h2>再現性を上げる — Seed と Persona</h2>
+      <p>V4以降、Suno AI には「気に入った曲の雰囲気で別の曲を作る」機能があります。これを活用すると、<strong>同じアーティスト感</strong>で複数の楽曲を作れます。</p>
+      <ul>
+        <li><strong>Seed指定</strong>：既存曲のSeedを流用することで、音色傾向を揃えやすくなります</li>
+        <li><strong>Persona</strong>：気に入った1曲を「Persona化」すると、以降の生成でそのボーカル/アレンジ傾向を呼び出せます</li>
+      </ul>
+      <p>運営者がデモ用のBGMを作るときは、まず満足する1曲を作り、それをPersona化してからEPのように何曲も生成する、という手順を取ります。バラツキが減って、まとまりのあるプロジェクトになります。</p>
+
+      <h2>NGプロンプト — やらないほうがいいこと</h2>
+      <p>逆に、失敗しやすいプロンプトの特徴は次の通り。</p>
+      <ul>
+        <li><strong>アーティスト名の直接指定</strong>：規約上もNGですし、そもそも期待通りに動かないことが多い</li>
+        <li><strong>形容詞の盛りすぎ</strong>：<code>beautiful, amazing, incredible, emotional, deep, powerful</code> — これらは情報量が低く、方向性が散る</li>
+        <li><strong>否定形</strong>：<code>no drums</code>, <code>without vocals</code> は無視されることがある。代わりに <code>instrumental only</code> のように肯定形で</li>
+        <li><strong>日本語と英語の混在</strong>：英語で統一したほうが精度が出やすい（歌詞は日本語でOK）</li>
+      </ul>
+
+      <h2>実例 — 運営者が実際に使ったプロンプト3つ</h2>
+
+      <h3>1. AI Gakufu トップページBGM用</h3>
+      <pre><code>ambient electronic, soft rhodes piano and airy pads, slow tempo, dreamy and hopeful, modern japanese aesthetic</code></pre>
+      <p>→ 3分ほどの環境音楽的なトラック。サイト背景の動画にマッチ。</p>
+
+      <h3>2. 紹介動画のオープニング</h3>
+      <pre><code>cinematic orchestral, rising strings and subtle percussion, dramatic build-up, 30 seconds, epic movie trailer style</code></pre>
+      <p>→ ショート動画のオープニングに合う高揚感のあるイントロ。</p>
+
+      <h3>3. 開発中の気分転換用</h3>
+      <pre><code>lo-fi hip hop, warm tape saturated drums, jazzy chords on electric piano, mid-tempo, rainy tokyo evening</code></pre>
+      <p>→ 作業BGM。何時間でも流しっぱなしにできる。</p>
+
+      <h2>最後に — プロンプトは対話だと考える</h2>
+      <p>Suno AI のプロンプトは「一発で完璧な曲を出す魔法」ではなく、<strong>AIとの対話の第一声</strong>です。思い通りにならなかったら、気に入った部分を活かして Remix/Extend する、プロンプトを少しずつ変えて再生成する、Persona化して方向性を固める。この繰り返しで、「自分の曲」と呼べる完成度にたどり着きます。</p>
+      <p>そして完成した曲は、ぜひ AI Gakufu で楽譜化してみてください。音として聞くのとはまったく違う発見があります。</p>
+
+      <div class="article-cta">
+        <h4>Suno AI で作った曲を楽譜にする</h4>
+        <p>プロンプトで作った自信作を、AI Gakufu で楽譜 PDF に変換できます。無料・会員登録不要です。</p>
+        <a href="/" class="btn-primary-pill">AI Gakufu を開く</a>
+      </div>
+
+      <hr>
+
+      <section class="related-articles">
+        <h3>関連記事</h3>
+        <div class="related-grid">
+          <a class="related-card" href="/blog/suno-ai-score-guide.html">
+            <div class="rcat">Suno AI 活用</div>
+            <h5>Suno AIで作った曲を楽譜にする完全ガイド【2026年版】</h5>
+          </a>
+          <a class="related-card" href="/blog/how-ai-transcribes-music.html">
+            <div class="rcat">AI 技術解説</div>
+            <h5>音声から楽譜へ — AIが音を「読む」仕組みを図解</h5>
+          </a>
+          <a class="related-card" href="/blog/why-transcribe-your-music.html">
+            <div class="rcat">作曲のヒント</div>
+            <h5>自作曲を楽譜にする5つのメリット｜記録・練習・共有</h5>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <p class="footer-logo">AI Gakufu</p>
+    <div class="footer-links">
+      <a href="/howto.html">使い方</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/terms.html">利用規約</a>
+    </div>
+    <p class="footer-copy">Powered by Spotify basic-pitch &amp; LilyPond</p>
+  </footer>
+
+</body>
+</html>

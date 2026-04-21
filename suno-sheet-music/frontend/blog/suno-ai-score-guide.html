@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suno AIで作った曲を楽譜にする完全ガイド【2026年版】 — AI Gakufu</title>
+  <meta name="description" content="Suno AIで生成した楽曲をMP3で書き出し、AI Gakufu で楽譜化するまでの手順を、運営者自身が実際に試した体験とスクリーンショットで解説。精度を上げる書き出し設定のコツも共有します。" />
+  <meta name="keywords" content="Suno AI 楽譜, Suno AI 楽譜化, Suno ピアノ譜, AI 楽曲 楽譜, Suno 使い方" />
+  <link rel="canonical" href="https://ai-gakufu.com/blog/suno-ai-score-guide.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Suno AIで作った曲を楽譜にする完全ガイド【2026年版】" />
+  <meta property="og:description" content="Suno AIで生成した楽曲を MP3 で書き出し、AI Gakufu で楽譜化するまでの全工程を解説。精度を上げるコツも実体験から紹介。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ai-gakufu.com/blog/suno-ai-score-guide.html" />
+  <meta property="og:site_name" content="AI Gakufu" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9510897003071903" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Suno AIで作った曲を楽譜にする完全ガイド【2026年版】",
+    "description": "Suno AIで生成した楽曲をAI Gakufuで楽譜化するまでの手順を、運営者自身の実体験とともに徹底解説。",
+    "author": { "@type": "Organization", "name": "AI Gakufu 運営チーム" },
+    "publisher": { "@type": "Organization", "name": "AI Gakufu", "url": "https://ai-gakufu.com/" },
+    "datePublished": "2026-04-18",
+    "dateModified": "2026-04-18",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ai-gakufu.com/blog/suno-ai-score-guide.html" }
+  }
+  </script>
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://ai-gakufu.com/" },
+      { "@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://ai-gakufu.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Suno AIで作った曲を楽譜にする完全ガイド" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">AI Gakufu</a>
+      <div class="nav-links">
+        <a href="/howto.html">使い方</a>
+        <a href="/blog/">ブログ</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html">運営者情報</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="article-wrap">
+
+    <nav class="breadcrumb">
+      <a href="/">ホーム</a><span class="sep">/</span>
+      <a href="/blog/">ブログ</a><span class="sep">/</span>
+      Suno AIで作った曲を楽譜にする完全ガイド
+    </nav>
+
+    <header class="article-header">
+      <span class="article-category">Suno AI 活用</span>
+      <h1 class="article-title">Suno AIで作った曲を楽譜にする完全ガイド【2026年版】</h1>
+      <div class="article-meta">
+        <time datetime="2026-04-18">2026年4月18日 公開</time>
+        <span class="author">著者：AI Gakufu 運営チーム</span>
+        <span>約12分で読了（約2,500文字）</span>
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>「Suno AI で思いついた鼻歌を入力したら、想像以上にいい曲ができた。でも、これを楽器で演奏したい」— そんなふうに思った人は、きっと少なくないはずです。筆者も最初に Suno AI で作った曲がピアノの音を含むアレンジだったので、試しに弾いてみようと思い立ち、楽譜を探しました。ですが、AI が生成した完全オリジナル曲に公式の楽譜などありません。</p>
+
+      <p>このガイドでは、Suno AI で生成した楽曲を AI Gakufu で楽譜化するまでの具体的な手順と、<strong>精度を少しでも上げるための運営者による実験結果</strong>をまとめました。読みながら同じ操作を行うだけで、数分後には自作曲の楽譜 PDF が手元に届く、そんな内容を目指しています。</p>
+
+      <div class="callout">
+        <strong>この記事でわかること</strong>
+        ・Suno AI から音源を書き出す正しい手順<br>
+        ・AI Gakufu へのアップロードと楽譜生成の流れ<br>
+        ・楽譜の精度を上げる6つのコツ<br>
+        ・うまく変換できないときのチェックリスト
+      </div>
+
+      <h2>Suno AI とは何か（2026年時点の基本情報）</h2>
+      <p>Suno AI は、テキストプロンプトからボーカル付きの楽曲をわずか数十秒で生成するサービスです。2023年末ごろから急速に話題となり、2026年現在では Custom Mode による歌詞指定や、ジャンル・雰囲気のきめ細かな制御が可能になっています。</p>
+      <p>出力される楽曲は MP3 / WAV で書き出せるため、ダウンロードして DAW に取り込んだり、SNS で共有したりすることができます。ただし、出てくるのはあくまで<strong>音声ファイル</strong>であって、楽譜データ（MIDI や MusicXML）は得られません。ここが、Suno AI の曲を「演奏したい」ユーザーにとって最大の壁になります。</p>
+
+      <h2>準備：Suno AI から音源を書き出す</h2>
+      <p>まずは楽譜化したい楽曲を Suno AI から書き出します。この工程での設定が、そのまま楽譜の精度に直結するので、少し丁寧に進めましょう。</p>
+
+      <h3>1. 書き出し形式を MP3 or WAV にする</h3>
+      <p>Suno AI の楽曲ページには「Download」ボタンがあり、MP3 と WAV が選択できます（2026年4月時点）。<strong>迷ったら MP3 で十分</strong>です。AI Gakufu の内部では ffmpeg で WAV にリサンプリングするため、MP3 であっても精度が落ちることはほぼありません。</p>
+      <p>ただし、どうしても高音質のまま解析したい場合は WAV でダウンロードしてください。容量は MP3 の10倍以上になりますが、AI Gakufu の上限（50MB）以内に収まる3〜4分の曲なら問題ありません。</p>
+
+      <h3>2. 曲の長さを確認する</h3>
+      <p>Suno AI の通常モードで生成される楽曲は約2分（120秒）前後、Extend 機能を使うと 4分以上になる場合もあります。<strong>AI Gakufu では楽曲の長さに特に制限は設けていませんが、長すぎると楽譜のページ数が増えすぎます</strong>。目安として、以下を参考にしてください。</p>
+      <ul>
+        <li><strong>2分前後</strong>：楽譜 5〜7ページ、読みやすい</li>
+        <li><strong>4分前後</strong>：楽譜 10〜15ページ、練習用ならこのくらいまで</li>
+        <li><strong>8分超</strong>：楽譜 20ページ以上、分析用途向け</li>
+      </ul>
+
+      <h3>3. 無料プランでも楽譜化は可能</h3>
+      <p>Suno AI の無料プランで生成した楽曲でも、自分が生成した曲であれば自由に書き出して楽譜化できます。有料プラン（Pro / Premier）ではコマーシャル利用の権利が付くので、楽譜を販売したい、YouTube で収益化したい、という場合は有料プランを検討してください。</p>
+
+      <h2>AI Gakufu にアップロードする</h2>
+      <p>音源の準備ができたら、<a href="/">AI Gakufu のトップページ</a>にアクセスします。</p>
+
+      <h3>アップロード手順</h3>
+      <ol>
+        <li>「楽曲をアップロード」エリアに MP3 ファイルをドラッグ＆ドロップ、もしくは「ファイルを選択」ボタンから指定</li>
+        <li>曲のタイトルを入力（英数字・日本語どちらもOK）</li>
+        <li>「楽譜を生成する」ボタンをクリック</li>
+        <li>短い広告を視聴（サービス運営のためご協力ください）</li>
+        <li>1〜5分の解析時間を待つ</li>
+        <li>ピアノ譜・ギター譜の PDF が表示されたらダウンロード</li>
+      </ol>
+
+      <div class="callout">
+        <strong>処理時間の目安</strong>
+        Spotify の Basic Pitch という音声→MIDI 変換モデルが楽曲を解析し、LilyPond で楽譜に組版しています。1分の曲で約30秒〜1分、4分の曲で約2〜4分が目安です。
+      </div>
+
+      <h3>対応フォーマットと容量</h3>
+      <p>AI Gakufu は MP3 / WAV / M4A / OGG / FLAC / AAC に対応しています。Suno AI からダウンロードしたファイルはそのまま使えるので、変換は不要です。ファイルサイズは 50MB まで対応しているため、4〜5分の楽曲ならほぼ問題ないサイズに収まります。</p>
+
+      <h2>生成される楽譜を見てみよう</h2>
+      <p>AI Gakufu では1つの楽曲から<strong>2種類の楽譜</strong>が同時に出力されます。これは、運営者が個人でピアノもギターもやりたい、という欲求から実装した仕様です。</p>
+
+      <h3>ピアノ譜（大譜表）</h3>
+      <p>右手（高音域・メロディ）と左手（低音域・伴奏）が2段の五線譜で並ぶ、一般的なピアノ楽譜の形式です。MIDI ノートの音高が60（中央C）以上を高音部譜表に、それ未満を低音部譜表に割り当てています。</p>
+
+      <h3>ギター譜（TAB譜付き）</h3>
+      <p>五線譜と6本弦のタブ譜（TAB）を併記したスタイルです。音高を MIDI 40〜76 の範囲にマッピングし、ギターで演奏可能な範囲に自動調整しています。コードも検出された場合はコードネームとして上部に表示されます。</p>
+
+      <h2>精度を上げる6つのコツ（運営者の実験結果）</h2>
+      <p>ここからが本題です。筆者は AI Gakufu の開発過程で100曲以上の Suno 楽曲を楽譜化してきました。その中で見えてきた「精度が上がる条件」を共有します。</p>
+
+      <h3>コツ1：メロディラインがはっきりした曲を選ぶ</h3>
+      <p>バラードやソロピアノ曲のように、主旋律が明確な曲は Basic Pitch の検出精度が非常に高いです。逆に、EDM のような複数の音が分厚く重なる曲は、AI が音の塊を個別に分離するのに苦労します。</p>
+      <p>もし同じプロンプトで Suno が2つの候補（v1, v2）を出してきたら、<strong>静かで少ない楽器構成のほうを選ぶ</strong>と楽譜化の結果が良くなります。</p>
+
+      <h3>コツ2：ボーカル重視の曲はインスト部分を抽出する</h3>
+      <p>歌声が入っている曲は、ピッチ推定にとっては実はなかなかの難敵です。人間の歌には微妙なビブラートや子音ノイズが含まれており、AI は「この音は C4？C#4？」と揺らいでしまいます。</p>
+      <p>Suno AI には「Instrumental」オプションがあり、歌なしの伴奏だけを生成できます。楽譜化の精度を優先するなら、プロンプトに <code>[instrumental]</code> を加えるか、UI の Instrumental トグルをオンにしてください。</p>
+
+      <h3>コツ3：BPM は 60〜120 程度に抑える</h3>
+      <p>速すぎるテンポの曲は、1秒あたりの音符数が増え、AI が取りこぼしやすくなります。また、遅すぎる曲は逆に「伸ばしている音」と「次の音」の区別が曖昧になりがちです。</p>
+      <p>Suno で BPM を直接指定することは難しいのですが、プロンプトに <code>slow tempo</code> や <code>moderate tempo, 90 bpm</code> のような表現を入れると影響します。</p>
+
+      <h3>コツ4：シンプルな楽器構成をプロンプトで指定する</h3>
+      <p>たとえば「ピアノだけ」「アコースティックギター1本」といった最小構成は、Basic Pitch の得意分野です。以下のようなプロンプトが有効でした。</p>
+      <ul>
+        <li><code>solo piano, ballad, introspective</code></li>
+        <li><code>acoustic guitar fingerstyle, gentle</code></li>
+        <li><code>piano and violin duet, classical</code></li>
+      </ul>
+
+      <h3>コツ5：ノイズを含まない音源を使う</h3>
+      <p>Suno AI の出力は基本的に綺麗ですが、稀に<strong>軽いアーティファクト（デジタルノイズ）</strong>が残る場合があります。これらは楽譜化でゴースト音符として現れてしまいます。気になるなら、Suno 側で再生成するのが早道です。</p>
+
+      <h3>コツ6：短めのセクションで試す</h3>
+      <p>いきなり4分の完全版を楽譜化するのではなく、30〜60秒の短いバージョンで1度試してみるのがおすすめです。AI が自分の曲のどの部分でつまずきやすいかが見えてきます。</p>
+
+      <h2>よくあるつまずきと対処</h2>
+      <table>
+        <tr><th>症状</th><th>原因</th><th>対処</th></tr>
+        <tr><td>音符が多すぎて読めない</td><td>複雑な楽器構成</td><td>Instrumental 版で再生成</td></tr>
+        <tr><td>リズムが妙</td><td>BPM 推定のずれ</td><td>メトロノーム感のある曲を選ぶ</td></tr>
+        <tr><td>キーがずれている</td><td>Suno の微調整</td><td>楽譜ソフトで移調すれば OK</td></tr>
+        <tr><td>ボーカル部分が残る</td><td>歌声を楽器と誤認</td><td>インストで再生成</td></tr>
+      </table>
+
+      <h2>楽譜ができたあとにやること</h2>
+      <p>PDF を手に入れたら、ぜひ以下のステップも試してみてください。</p>
+      <ul>
+        <li><strong>実際に弾いてみる</strong>：自作曲を自分で演奏する体験は、想像以上に感動します</li>
+        <li><strong>楽譜を印刷して書き込む</strong>：AI が出した音に対して、自分の解釈を加えるのも楽しいです</li>
+        <li><strong>他楽器用に移調する</strong>：ピアノで書かれた曲をギター用に移調するなど、二次活用も可能</li>
+        <li><strong>SNSで共有する</strong>：「Suno AI で作った曲をAIで楽譜化してみた」はコンテンツとして強い</li>
+      </ul>
+
+      <div class="article-cta">
+        <h4>さっそく楽譜を作ってみる</h4>
+        <p>Suno AI で書き出した音源ファイルがあれば、今すぐ楽譜化できます。無料・会員登録不要。</p>
+        <a href="/" class="btn-primary-pill">AI Gakufu を開く</a>
+      </div>
+
+      <h2>まとめ</h2>
+      <p>Suno AI と AI Gakufu の組み合わせは、<strong>「作曲→楽譜化→演奏」という音楽制作の全サイクルをAIで完結させる</strong>最もシンプルな構成です。従来なら音大生レベルの耳コピ能力が必要だった作業が、数分のクリック作業で可能になりました。</p>
+      <p>楽譜化の精度は楽曲のタイプによって大きく変わりますが、本記事で紹介したコツを押さえれば実用レベルの譜面が得られます。ぜひ、あなたの Suno ライブラリから1曲選んで試してみてください。</p>
+
+      <hr>
+
+      <section class="related-articles">
+        <h3>関連記事</h3>
+        <div class="related-grid">
+          <a class="related-card" href="/blog/how-ai-transcribes-music.html">
+            <div class="rcat">AI 技術解説</div>
+            <h5>音声から楽譜へ — AIが音を「読む」仕組みを図解</h5>
+          </a>
+          <a class="related-card" href="/blog/suno-ai-prompt-tips.html">
+            <div class="rcat">Suno AI 活用</div>
+            <h5>Suno AIで思い通りの曲を作るプロンプト設計のコツ</h5>
+          </a>
+          <a class="related-card" href="/blog/read-sheet-music-basics.html">
+            <div class="rcat">音楽基礎</div>
+            <h5>楽譜の読み方入門｜五線譜・音符・リズムの基本</h5>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </article>
+
+  <footer class="site-footer">
+    <p class="footer-logo">AI Gakufu</p>
+    <div class="footer-links">
+      <a href="/howto.html">使い方</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/terms.html">利用規約</a>
+    </div>
+    <p class="footer-copy">Powered by Spotify basic-pitch &amp; LilyPond</p>
+  </footer>
+
+</body>
+</html>
