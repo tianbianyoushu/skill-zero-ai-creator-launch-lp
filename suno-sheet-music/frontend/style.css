@@ -26,10 +26,13 @@
   --shadow:      0 2px 40px rgba(0,0,0,.6);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: #000000; /* dark base under the animation iframe */
+}
 
 body {
-  background: var(--bg);
+  background: transparent; /* let bg-animation.html iframe show through */
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
                "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
@@ -660,3 +663,13 @@ body {
 .back-link { display: inline-flex; align-items: center; gap: .4rem; color: var(--text-3); text-decoration: none; font-size: .85rem; margin-bottom: 1.25rem; transition: color .15s; }
 .back-link:hover { color: var(--blue); }
 .important { background: rgba(0,113,227,.08); border: 1px solid rgba(0,113,227,.2); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-top: .5rem; }
+
+/* ===== Background animation iframe ===== */
+#bg-anim {
+  display: block;
+}
+@media (max-width: 768px) {
+  /* Hide heavy canvas animation on mobile to save battery/performance */
+  #bg-anim { display: none; }
+  html { background: #000000; }
+}

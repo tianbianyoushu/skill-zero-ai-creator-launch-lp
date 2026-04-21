@@ -16,6 +16,24 @@
 </head>
 <body>
 
+  <!-- Background animation (desktop only) -->
+  <iframe
+    id="bg-anim"
+    src="bg-animation.html"
+    aria-hidden="true"
+    tabindex="-1"
+    scrolling="no"
+    style="
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      z-index: -1;
+      opacity: 0.38;
+      pointer-events: none;
+    "
+  ></iframe>
+
   <!-- Nav -->
   <nav class="nav">
     <div class="nav-inner">
