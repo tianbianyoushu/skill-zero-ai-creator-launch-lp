@@ -668,10 +668,13 @@ body {
 #bg-anim {
   display: block;
 }
+/* Mobile: keep animation visible but slightly dimmer for battery/readability */
 @media (max-width: 768px) {
-  /* Hide heavy canvas animation on mobile to save battery/performance */
-  #bg-anim { display: none; }
-  html { background: #000000; }
+  #bg-anim {
+    display: block;
+    opacity: 0.55 !important;
+    filter: saturate(1.1) brightness(1) !important;
+  }
 }
 
 /* ============================================
