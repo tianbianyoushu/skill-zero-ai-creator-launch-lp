@@ -16,7 +16,7 @@
   const GA_ID = 'G-TTL2734JX3'; // ← ここだけ置換すればOK
 
   // プレースホルダのままなら計測タグを読み込まない（開発環境・未設定時の保護）
-  if (!GA_ID || GA_ID === 'G-TTL2734JX3') return;
+  if (!GA_ID || GA_ID === 'G-XXXXXXXXXX') return;
 
   // gtag.js を非同期で読み込み
   const script = document.createElement('script');
