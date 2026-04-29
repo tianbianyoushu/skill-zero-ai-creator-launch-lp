@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIDIとは？AI楽譜変換のしくみをやさしく解説 — AI Gakufu</title>
+  <meta name="description" content="MIDIの基本概念からAIが音声ファイルを楽譜に変換するしくみまでをやさしく解説。音楽理論ゼロでも理解できる入門解説です。" />
+  <meta name="keywords" content="MIDI とは, AI 楽譜 変換 しくみ, 音声 楽譜 変換, basic-pitch, ピアノ譜 変換" />
+  <link rel="canonical" href="https://ai-gakufu.com/blog/midi-basics-ai-sheet-music.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MIDIとは？AI楽譜変換のしくみをやさしく解説" />
+  <meta property="og:description" content="MIDIの基本からAIが音声ファイルを楽譜に変換するしくみまでを、音楽理論ゼロでも分かるように解説します。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ai-gakufu.com/blog/midi-basics-ai-sheet-music.html" />
+  <meta property="og:site_name" content="AI Gakufu" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9510897003071903" crossorigin="anonymous"></script>
+  <script src="/analytics.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "MIDIとは？AI楽譜変換のしくみをやさしく解説",
+    "description": "MIDIの基本概念からAIが音声ファイルを楽譜に変換するしくみまでをやさしく解説。",
+    "author": { "@type": "Organization", "name": "AI Gakufu 運営チーム" },
+    "publisher": { "@type": "Organization", "name": "AI Gakufu", "url": "https://ai-gakufu.com/" },
+    "datePublished": "2026-04-22",
+    "dateModified": "2026-04-22",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ai-gakufu.com/blog/midi-basics-ai-sheet-music.html" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://ai-gakufu.com/" },
+      { "@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://ai-gakufu.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "MIDIとは？AI楽譜変換のしくみ" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">AI Gakufu</a>
+      <div class="nav-links">
+        <a href="/howto.html">使い方</a>
+        <a href="/blog/">ブログ</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html">運営者情報</a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="article-wrap">
+
+    <nav class="breadcrumb">
+      <a href="/">ホーム</a><span class="sep">/</span>
+      <a href="/blog/">ブログ</a><span class="sep">/</span>
+      MIDIとは？AI楽譜変換のしくみ
+    </nav>
+
+    <header class="article-header">
+      <span class="article-category">音楽×AI 基礎知識</span>
+      <h1 class="article-title">MIDIとは？AI楽譜変換のしくみをやさしく解説</h1>
+      <div class="article-meta">
+        <time datetime="2026-04-22">2026年4月22日 公開</time>
+        <span class="author">著者：AI Gakufu 運営チーム</span>
+        <span>約10分で読了（約2,200文字）</span>
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>「AI Gakufu で楽譜が生成できるのはわかった。でも、いったいどうやって音声ファイルを楽譜に変換しているの？」そんな疑問を持ったことはありませんか？このページでは、AI楽譜変換の核心にある「MIDI」という規格と、音声→MIDI→楽譜というプロセスを、音楽理論がわからない方でも理解できるようにひも解いていきます。</p>
+
+      <h2>MIDIとは「音の情報」を記録するデータ形式</h2>
+
+      <p>MIDI（Musical Instrument Digital Interface）は、1983年に制定された音楽データの国際規格です。簡単に言うと、<strong>「どの音を、いつ、どの強さで、どのくらいの長さ弾いたか」を数字で記録するフォーマット</strong>です。</p>
+
+      <p>例えばピアノの「ド」を弾くと、MIDIでは次のような情報として記録されます：</p>
+
+      <ul>
+        <li><strong>音程（ノートナンバー）</strong>：60（中央ドを表す番号）</li>
+        <li><strong>ベロシティ（強さ）</strong>：80（0〜127のスケール）</li>
+        <li><strong>タイミング</strong>：曲の開始から1.2秒後</li>
+        <li><strong>音の長さ</strong>：0.5秒間</li>
+      </ul>
+
+      <p>MIDIは「音そのもの（波形データ）」ではなく「演奏の指示書」です。このため、MP3のような音声ファイルより容量が圧倒的に小さく、楽譜化に都合が良いのです。</p>
+
+      <h2>MP3からMIDIへ：AIが行う「音程の聞き取り」</h2>
+
+      <p>AI Gakufu がアップロードされた音声ファイルを楽譜にする際、内部では次のプロセスを経ています：</p>
+
+      <ol>
+        <li><strong>音声ファイル（MP3 / WAV）の読み込み</strong>：まず音声を波形データとして解析します。</li>
+        <li><strong>ピッチ検出（基本周波数解析）</strong>：Spotify が開発したオープンソースライブラリ「basic-pitch」を使い、波形から各音の音程（周波数）を検出します。</li>
+        <li><strong>MIDI変換</strong>：検出した音程・タイミング・強弱の情報を MIDI データとして出力します。</li>
+        <li><strong>楽譜レンダリング</strong>：MIDI データを LilyPond（楽譜組版エンジン）に渡し、五線譜として描画し PDF を生成します。</li>
+      </ol>
+
+      <p>このうち最も技術的に難しいのが「2. ピッチ検出」です。実際の音楽には複数の楽器・声・残響が重なっているため、「どの音が主旋律か」を正確に判断するのはAIにとっても高難易度の課題です。</p>
+
+      <h2>basic-pitch が使う技術：ディープラーニングによる音源分離</h2>
+
+      <p>Spotify の basic-pitch は、ディープラーニング（深層学習）を用いてポリフォニック（複数音が同時に鳴る）なオーディオからノートを検出します。具体的には音声の周波数成分を時間軸で表した「スペクトログラム」を画像のように扱い、ニューラルネットワークがどの周波数がどのタイミングで鳴っているかを予測します。</p>
+
+      <p>このアプローチは従来の手法（フーリエ変換ベース）より精度が高く、ピアノやギターのような調和音が多い楽器に特に効果的です。ただし、人の声・ドラム・複雑なコード演奏が混在する曲では、検出精度が下がりやすいのが現在の限界です。</p>
+
+      <h2>楽譜の精度を上げるための3つのポイント</h2>
+
+      <p>AI楽譜変換の仕組みを理解すると、「どうすれば精度が上がるか」が自然に見えてきます。</p>
+
+      <h3>1. 単一楽器またはシンプルな編成の音源を使う</h3>
+      <p>バンドサウンドやフルオーケストラの楽曲よりも、ピアノソロや単音ギターのほうが圧倒的に認識精度が高くなります。Suno AI でプロンプトを書く場合は「piano solo」「guitar melody only」などを明示すると効果的です。</p>
+
+      <h3>2. リバーブ・エフェクトを最小限にする</h3>
+      <p>残響音（リバーブ）は周波数を拡散させるため、ピッチ検出の精度を落とします。Suno AI のミックスを「dry（乾いた音）」に近づけると、AIが音程を拾いやすくなります。</p>
+
+      <h3>3. テンポの安定した楽曲を選ぶ</h3>
+      <p>テンポが大きく揺れる楽曲（ルバート演奏など）は、タイミング検出がずれやすくなります。一定のテンポで演奏された楽曲のほうが、拍の境界を正確に検出できます。</p>
+
+      <h2>まとめ：仕組みを知ると楽譜化がもっと楽しくなる</h2>
+
+      <p>MIDI は「演奏の指示書」であり、AI はその指示書を音声から自動で書き起こすツールです。音楽理論の知識がなくても楽譜を得ることができるのは、basic-pitch のようなAI技術と LilyPond のような楽譜レンダラーが融合したおかげです。</p>
+
+      <p>「なぜ一部の音が楽譜に反映されないの？」「なぜドラムパートは楽譜に出てこないの？」そういった疑問も、このしくみを理解すると自然と腑に落ちるはずです。AI Gakufu をより使いこなすために、ぜひ参考にしてみてください。</p>
+
+      <div style="margin:3rem 0;padding:1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;">
+        <p style="margin:0 0 .75rem;font-weight:700;">実際に試してみませんか？</p>
+        <p style="margin:0 0 1rem;color:var(--text-2);font-size:.95rem;">AI Gakufu ならアップロードするだけでピアノ譜・ギター譜を無料で生成できます。</p>
+        <a href="/" class="btn-primary-pill">無料で楽譜を作る →</a>
+      </div>
+
+    </div>
+
+    <nav class="related-articles">
+      <h2 class="related-title">関連記事</h2>
+      <div class="related-grid">
+        <a href="/blog/how-ai-transcribes-music.html" class="related-card">
+          <span class="cat">技術解説</span>
+          <h3>音声から楽譜へ：AIはどうやって「音を楽譜に変換」しているのか</h3>
+        </a>
+        <a href="/blog/suno-ai-score-guide.html" class="related-card">
+          <span class="cat">Suno AI 活用</span>
+          <h3>Suno AIで作った曲を楽譜にする完全ガイド【2026年版】</h3>
+        </a>
+      </div>
+    </nav>
+
+  </article>
+
+  <footer class="site-footer">
+    <p class="footer-logo">AI Gakufu</p>
+    <div class="footer-links">
+      <a href="/howto.html">使い方</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/terms.html">利用規約</a>
+    </div>
+    <p class="footer-copy">Powered by Spotify basic-pitch &amp; LilyPond</p>
+  </footer>
+
+</body>
+</html>
